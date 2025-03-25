@@ -10,7 +10,7 @@
   - [Query account](#query-account)
   - [Update account expiration time](#update-account-expiration-time)
   - [Update account status](#update-account-status)
-  - [Update account connectins](#update-account-connections)
+  - [Update account connections](#update-account-connections)
   - [Update account email](#update-account-email)
   - [Query change logs](#query-change-logs)
   - [Create random account](#create-random-account)
@@ -92,7 +92,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 <table>
   <tr>
     <td>URL</td>
-    <td><span>https://rtk.geodnet.com/api/v3/user/create</span></td>
+    <td><span>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/create</span></td>
   </tr>
   <tr>
     <td>Method</td>
@@ -148,7 +148,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 <table>
   <tr>
     <td>URL</td>
-    <td><span>https://rtk.geodnet.com/api/v3/user/info</span></td>
+    <td><span>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/info</span></td>
   </tr>
   <tr>
     <td>Method</td>
@@ -214,7 +214,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 <table>
   <tr>
     <td>URL</td>
-    <td><span>https://rtk.geodnet.com/api/v3/user/set/expiration</span></td>
+    <td><span>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/set/expiration</span></td>
   </tr>
   <tr>
     <td>Method</td>
@@ -267,7 +267,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 <table>
   <tr>
     <td>URL</td>
-    <td><span>https://rtk.geodnet.com/api/v3/user/set/status</span></td>
+    <td><span>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/set/status</span></td>
   </tr>
   <tr>
     <td>Method</td>
@@ -320,7 +320,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 <table>
   <tr>
     <td>URL</td>
-    <td><span>https://rtk.geodnet.com/api/v3/user/set/connections</span></td>
+    <td><span>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/set/connections</span></td>
   </tr>
   <tr>
     <td>Method</td>
@@ -373,7 +373,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 <table>
   <tr>
     <td>URL</td>
-    <td><span>https://rtk.geodnet.com/api/v3/user/set/email</span></td>
+    <td><span>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/set/email</span></td>
   </tr>
   <tr>
     <td>Method</td>
@@ -426,7 +426,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 <table>
   <tr>
     <td>URL</td>
-    <td><span>https://rtk.geodnet.com/api/v3/user/logs</span></td>
+    <td><span>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/logs</span></td>
   </tr>
   <tr>
     <td>Method</td>
@@ -529,7 +529,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 <table>
   <tr>
     <td>URL</td>
-    <td><span>https://rtk.geodnet.com/api/v3/user/rand</span></td>
+    <td><span>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/rand</span></td>
   </tr>
   <tr>
     <td>Method</td>
@@ -591,7 +591,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 <table>
   <tr>
     <td>URL</td>
-    <td><span>https://rtk.geodnet.com/api/v3/coverage/list</span></td>
+    <td><span>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/coverage/list</span></td>
   </tr>
   <tr>
     <td>Method</td>
@@ -661,7 +661,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 <table>
   <tr>
     <td>URL</td>
-    <td><span>https://rtk.geodnet.com/api/v3/station/list</span></td>
+    <td><span>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/station/list</span></td>
   </tr>
   <tr>
     <td>Method</td>
@@ -689,19 +689,19 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 
 ### Response parameter
 
-| Parameter |   Example    |  Type  | Description                               |
-| :-------- | :----------: | :----: | :---------------------------------------- |
-| code      |     1000     | Number | Status code                               |
-| msg       |      OK      | String | Status code description                   |
-| data      |              | Array  | station list                              |
-| name      |     STN1     | String | base station name                         |
-| latitude  |    38.95     | Number | latitude                                  |
-| longitude |    -8.15     | Number | longitude                                 |
-| height    |    140.41    | Number | height                                    |
-| x         | 4916997.6867 | Number | X                                         |
-| y         | -704522.4782 | Number | Y                                         |
-| z         | 3987735.6055 | Number | Z                                         |
-| status    |    ACTIVE    | String | base station status(ACTIV,ONLINE,OFFLINE) |
+| Parameter |   Example    |  Type  | Description                                |
+| :-------- | :----------: | :----: | :----------------------------------------- |
+| code      |     1000     | Number | Status code                                |
+| msg       |      OK      | String | Status code description                    |
+| data      |              | Array  | station list                               |
+| name      |     STN1     | String | base station name                          |
+| latitude  |    38.95     | Number | latitude                                   |
+| longitude |    -8.15     | Number | longitude                                  |
+| height    |    140.41    | Number | height                                     |
+| x         | 4916997.6867 | Number | X                                          |
+| y         | -704522.4782 | Number | Y                                          |
+| z         | 3987735.6055 | Number | Z                                          |
+| status    |    ACTIVE    | String | base station status(ACTIVE,ONLINE,OFFLINE) |
 
 ### Response example
 
