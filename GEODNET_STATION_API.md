@@ -120,7 +120,7 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 <table>
   <tr>
     <td>URL</td>
-    <td><span>https&#x3a;&#x2f;&#x2f;rawdata.geodnet.com/api/rawdata/v1/coordinates</span></td>
+    <td>https&#x3a;&#x2f;&#x2f;rawdata.geodnet.com/api/rawdata/v1/coordinates</td>
   </tr>
   <tr>
     <td>Method</td>
@@ -192,7 +192,7 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 <table>
   <tr>
     <td>URL</td>
-    <td><span>https&#x3a;&#x2f;&#x2f;rawdata.geodnet.com/api/rawdata/v1/stations</span></td>
+    <td>https&#x3a;&#x2f;&#x2f;rawdata.geodnet.com/api/rawdata/v1/stations</td>
   </tr>
   <tr>
     <td>Method</td>
@@ -254,7 +254,7 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 
 | Code | Description                            |
 | :--- | :------------------------------------- |
-| 1000 | Successful                             |
+| 1000 | Success                                |
 | 1001 | No authorization in the request header |
 | 1002 | Invalid authorization                  |
 | 1003 | The requested account does not exist   |

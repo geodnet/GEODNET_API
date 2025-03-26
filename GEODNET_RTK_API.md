@@ -92,7 +92,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 <table>
   <tr>
     <td>URL</td>
-    <td><span>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/create</span></td>
+    <td>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/create</td>
   </tr>
   <tr>
     <td>Method</td>
@@ -148,7 +148,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 <table>
   <tr>
     <td>URL</td>
-    <td><span>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/info</span></td>
+    <td>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/info</td>
   </tr>
   <tr>
     <td>Method</td>
@@ -214,7 +214,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 <table>
   <tr>
     <td>URL</td>
-    <td><span>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/set/expiration</span></td>
+    <td>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/set/expiration</td>
   </tr>
   <tr>
     <td>Method</td>
@@ -267,7 +267,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 <table>
   <tr>
     <td>URL</td>
-    <td><span>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/set/status</span></td>
+    <td>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/set/status</td>
   </tr>
   <tr>
     <td>Method</td>
@@ -320,7 +320,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 <table>
   <tr>
     <td>URL</td>
-    <td><span>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/set/connections</span></td>
+    <td>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/set/connections</td>
   </tr>
   <tr>
     <td>Method</td>
@@ -373,7 +373,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 <table>
   <tr>
     <td>URL</td>
-    <td><span>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/set/email</span></td>
+    <td>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/set/email</td>
   </tr>
   <tr>
     <td>Method</td>
@@ -426,7 +426,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 <table>
   <tr>
     <td>URL</td>
-    <td><span>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/logs</span></td>
+    <td>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/logs</td>
   </tr>
   <tr>
     <td>Method</td>
@@ -529,7 +529,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 <table>
   <tr>
     <td>URL</td>
-    <td><span>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/rand</span></td>
+    <td>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/user/rand</td>
   </tr>
   <tr>
     <td>Method</td>
@@ -591,7 +591,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 <table>
   <tr>
     <td>URL</td>
-    <td><span>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/coverage/list</span></td>
+    <td>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/coverage/list</td>
   </tr>
   <tr>
     <td>Method</td>
@@ -661,7 +661,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 <table>
   <tr>
     <td>URL</td>
-    <td><span>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/station/list</span></td>
+    <td>https&#x3a;&#x2f;&#x2f;rtk.geodnet.com/api/v3/station/list</td>
   </tr>
   <tr>
     <td>Method</td>
@@ -730,7 +730,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 
 | Code | Description               |
 | :--- | :------------------------ |
-| 1000 | Successful                |
+| 1000 | Success                   |
 | 1001 | Invalid appId             |
 | 1002 | appId is disabled         |
 | 1003 | sign error                |
