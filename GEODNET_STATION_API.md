@@ -236,7 +236,7 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
   "msg": "OK",
   "data": [
     {
-      "mountpoint": "G001",
+      "name": "G001",
       "latitude": 37.399903117,
       "longitude": -121.985978077,
       "height": -21.862,
