@@ -134,15 +134,16 @@ This document is mainly used to define the relevant APIs in the PPK service, inc
 
 ### Response parameter
 
-| Parameter  |    Example    |  Type  | Description                            |
-| :--------- | :-----------: | :----: | :------------------------------------- |
-| code       |      200      | Number | Status code                            |
-| message    |    Success    | String | Status code description                |
-| data       |               | Object | Data content                           |
-| username   |   geoduser    | String | Username                               |
-| createTime | 1719388451655 | Number | Registration timestamp in milliseconds |
-| balance    |      100      | Number | balance                                |
-| expense    |       0       | Number | expense                                |
+| Parameter  |      Example       |  Type  | Description                            |
+| :--------- | :----------------: | :----: | :------------------------------------- |
+| code       |        200         | Number | Status code                            |
+| message    |      Success       | String | Status code description                |
+| data       |                    | Object | Data content                           |
+| username   |      geoduser      | String | Username                               |
+| email      | geoduser@gmail.com | String | Email                                  |
+| createTime |   1719388451655    | Number | Registration timestamp in milliseconds |
+| balance    |        100         | Number | Balance                                |
+| expense    |         0          | Number | Expense                                |
 
 ### Response example
 
@@ -152,6 +153,7 @@ This document is mainly used to define the relevant APIs in the PPK service, inc
   "message": "Success",
   "data": {
     "username": "geoduser",
+    "email": "geoduser@gmail.com",
     "createTime": 1719388451655,
     "balance": 100,
     "expense": 0
@@ -213,7 +215,7 @@ According to longitude, latitude, date, and time, get the nearest stations which
 | message   | Success | String | Status code description                 |
 | data      |         | Object | Data content                            |
 | stations  |         | Array  | Station list                            |
-| name      |  G001   | Number | station name                            |
+| name      |  G001   | String | station name                            |
 | distance  |  10.23  | Number | distance from the station in kilometers |
 
 If the stations are empty, it means there is no list of base stations that fulfill the condition
