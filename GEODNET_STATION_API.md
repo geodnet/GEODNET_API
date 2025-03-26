@@ -34,7 +34,7 @@ The api uses the http basic authentication method, which is consistent with the 
 The Authorization header field is constructed as follows:
 
 1. The username and password are combined with a single colon (:). This means that the username itself cannot contain a colon.
-2. The resulting string is encoded into an octet sequence. The character set to use for this encoding is by default unspecified, as long as it is compatible with US-ASCII, but the server may suggest the use of UTF-8 by sending the charset parameter.
+2. The resulting string is encoded into an octet sequence. The character set for this encoding is unspecified by default, but it must be compatible with US-ASCII; however, the server may suggest using UTF-8 by indicating the charset parameter.
 3. The resulting string is encoded using a variant of Base64 (+/ and with padding).
 4. The authorization method and a space character (e.g. "Basic ") is then prepended to the encoded string.
 
@@ -84,8 +84,8 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 
 ### Request parameter
 
-| Parameter | Example | Type | Required | Description |
-| :-------- | :-----: | :--: | :------: | :---------- |
+| Parameter | Example | Type  | Required | Description |
+| :-------- | :-----: | :---: | :------: | :---------- |
 
 ### Request example
 
@@ -130,8 +130,8 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 
 ### Request parameter
 
-| Parameter | Example | Type | Required | Description |
-| :-------- | :-----: | :--: | :------: | :---------- |
+| Parameter | Example | Type  | Required | Description |
+| :-------- | :-----: | :---: | :------: | :---------- |
 
 ### Request example
 
@@ -143,21 +143,21 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 
 ### Response parameter
 
-| Parameter   |    Example     |  Type  | Description             |
-| :---------- | :------------: | :----: | :---------------------- |
-| code        |      1000      | Number | Status code             |
-| msg         |       OK       | String | Status code description |
-| data        |                | Array  | Coordinate list         |
-| mountpoint  |      G001      | String | Mountpoint              |
-| coordinates |                | Array  | Coordinate information  |
-| name        |    ITRF2020    | String | Coordinate system name  |
-| epoch       |    2024.36     | Number | Epoch                   |
-| x           | -2687303.0419  | Number | X                       |
-| y           | -4302926.7402  | Number | Y                       |
-| z           |  3852731.2679  | Number | Z                       |
-| latitude    |  37.399903117  | Number | Latitude                |
-| longitude   | -121.985978077 | Number | Longitude               |
-| height      |    -21.862     | Number | Height                  |
+| Parameter   |    Example     |  Type  | Description                     |
+| :---------- | :------------: | :----: | :------------------------------ |
+| code        |      1000      | Number | Status code                     |
+| msg         |       OK       | String | Status code description         |
+| data        |                | Array  | Coordinate list                 |
+| mountpoint  |      G001      | String | Mountpoint                      |
+| coordinates |                | Array  | Detailed coordinate information |
+| name        |    ITRF2020    | String | Coordinate system name          |
+| epoch       |    2024.36     | Number | Epoch                           |
+| x           | -2687303.0419  | Number | X                               |
+| y           | -4302926.7402  | Number | Y                               |
+| z           |  3852731.2679  | Number | Z                               |
+| latitude    |  37.399903117  | Number | Latitude                        |
+| longitude   | -121.985978077 | Number | Longitude                       |
+| height      |    -21.862     | Number | Height                          |
 
 ### Response example
 
@@ -202,8 +202,8 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 
 ### Request parameter
 
-| Parameter | Example | Type | Required | Description |
-| :-------- | :-----: | :--: | :------: | :---------- |
+| Parameter | Example | Type  | Required | Description |
+| :-------- | :-----: | :---: | :------: | :---------- |
 
 ### Request example
 

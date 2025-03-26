@@ -47,7 +47,7 @@ This document is mainly used to define the relevant APIs in the PPK service, inc
 | Parameter | Example |  Type  | Description                           |
 | :-------- | :-----: | :----: | :------------------------------------ |
 | code      |   200   | Number | Status code, see appendix for details |
-| msg       | Success | String | Status description                    |
+| message   | Success | String | Status code description               |
 | data      |   {}    | Object | Data content, see the API for details |
 
 ## User api
@@ -88,7 +88,7 @@ This document is mainly used to define the relevant APIs in the PPK service, inc
 | Parameter |                          Example                          |  Type  | Description                                                       |
 | :-------- | :-------------------------------------------------------: | :----: | :---------------------------------------------------------------- |
 | code      |                            200                            | Number | Status code                                                       |
-| msg       |                          Success                          | String | Status code description                                           |
+| message   |                          Success                          | String | Status code description                                           |
 | data      |                                                           | Object | Data content                                                      |
 | token     | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imdl | String | Token, in other APIs, add token information in the request header |
 
@@ -121,8 +121,8 @@ This document is mainly used to define the relevant APIs in the PPK service, inc
 
 ### Request parameter
 
-| Parameter | Example | Type | Required | Description |
-| :-------- | :-----: | :--: | :------: | :---------- |
+| Parameter | Example | Type  | Required | Description |
+| :-------- | :-----: | :---: | :------: | :---------- |
 
 ### Request example
 
@@ -137,7 +137,7 @@ This document is mainly used to define the relevant APIs in the PPK service, inc
 | Parameter  |    Example    |  Type  | Description                            |
 | :--------- | :-----------: | :----: | :------------------------------------- |
 | code       |      200      | Number | Status code                            |
-| msg        |    Success    | String | Status code description                |
+| message    |    Success    | String | Status code description                |
 | data       |               | Object | Data content                           |
 | username   |   geoduser    | String | Username                               |
 | createTime | 1719388451655 | Number | Registration timestamp in milliseconds |
@@ -210,7 +210,7 @@ According to longitude, latitude, date, and time, get the nearest stations which
 | Parameter | Example |  Type  | Description                             |
 | :-------- | :-----: | :----: | :-------------------------------------- |
 | code      |   200   | Number | Status code                             |
-| msg       | Success | String | Status code description                 |
+| message   | Success | String | Status code description                 |
 | data      |         | Object | Data content                            |
 | stations  |         | Array  | Station list                            |
 | name      |  G001   | Number | station name                            |
@@ -296,7 +296,7 @@ If the stations are empty, it means there is no list of base stations that fulfi
 | Parameter |         Example          |  Type  | Description             |
 | :-------- | :----------------------: | :----: | :---------------------- |
 | code      |           200            | Number | Status code             |
-| msg       |         Success          | String | Status code description |
+| message   |         Success          | String | Status code description |
 | data      |                          | Object | Data content            |
 | orderId   | 667bebbe9f32c8ef2dd4643f | String | Order No.               |
 
@@ -350,7 +350,7 @@ https://ppk.geodnet.com/api/download/status/123826
 | Parameter | Example |  Type  | Description                                                |
 | :-------- | :-----: | :----: | :--------------------------------------------------------- |
 | code      |   200   | Number | Status code                                                |
-| msg       | Success | String | Status code description                                    |
+| message   | Success | String | Status code description                                    |
 | data      |         | Object | Data content                                               |
 | status    |    2    | Number | Order status<br>1: Processing<br>2: Completed<br>3: Failed |
 
@@ -404,7 +404,7 @@ https://ppk.geodnet.com/api/download/123826
 | Parameter | Example |  Type  | Description             |
 | :-------- | :-----: | :----: | :---------------------- |
 | code      |   200   | Number | Status code             |
-| msg       | Success | String | Status code description |
+| message   | Success | String | Status code description |
 
 Only return the json data if the request is abnormal; otherwise, return the downloaded file.
 
@@ -433,8 +433,8 @@ Get a list of all base stations, including precise coordinate information.
 
 ### Request parameter
 
-| Parameter | Example | Type | Required | Description |
-| :-------- | :-----: | :--: | :------: | :---------- |
+| Parameter | Example | Type  | Required | Description |
+| :-------- | :-----: | :---: | :------: | :---------- |
 
 ### Request example
 
@@ -449,7 +449,7 @@ Get a list of all base stations, including precise coordinate information.
 | Parameter  |                  Example                  |       Type       | Description                           |
 | :--------- | :---------------------------------------: | :--------------: | :------------------------------------ |
 | code       |                    200                    |      Number      | Status code                           |
-| msg        |                  Success                  |      String      | Status code description               |
+| message    |                  Success                  |      String      | Status code description               |
 | data       |                                           |      Object      | Data content                          |
 | stations   |                                           |      Array       | Station list                          |
 | name       |                   G001                    |      String      | Station name                          |
@@ -522,7 +522,7 @@ https://ppk.geodnet.com/api/user/station/G001
 | Parameter  |                  Example                  |       Type       | Description                           |
 | :--------- | :---------------------------------------: | :--------------: | :------------------------------------ |
 | code       |                    200                    |      Number      | Status code                           |
-| msg        |                  Success                  |      String      | Status code description               |
+| message    |                  Success                  |      String      | Status code description               |
 | data       |                                           |      Object      | Data content                          |
 | name       |                   G001                    |      String      | Station name                          |
 | status     |                  ACTIVE                   |      String      | Station status(ONLINE,ACTIVE,OFFLINE) |
