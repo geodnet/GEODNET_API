@@ -112,7 +112,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 | time      |          1718150400000           | Number |    Y     | Current server timestamp in milliseconds |
 | sign      | 8dd687e158219da6ccc689aef6c0a6a1 | String |    Y     | Encrypted signature                      |
 
-### Request parameter
+### Request example
 
 ```json
 {
@@ -165,7 +165,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 | time      |          1718150400000           | Number |    Y     | Current server timestamp in milliseconds |
 | sign      | 33fcd377ee04a81173f6d9b6e6f54ae3 | String |    Y     | Encrypted signature                      |
 
-### Request parameter
+### Request example
 
 ```json
 {
@@ -232,7 +232,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 | time       |          1718150400000           | Number |    Y     | Current server timestamp in milliseconds     |
 | sign       | 443a2f038aef0fbc53eefc3b90252af8 | String |    Y     | Encrypted signature                          |
 
-### Request parameter
+### Request example
 
 ```json
 {
@@ -285,7 +285,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 | time      |          1718150400000           | Number |    Y     | Current server timestamp in milliseconds |
 | sign      | aa5161309638d773971cb968a6b35c5c | String |    Y     | Encrypted signature                      |
 
-### Request parameter
+### Request example
 
 ```json
 {
@@ -338,7 +338,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 | time        |          1718150400000           | Number |    Y     | Current server timestamp in milliseconds                  |
 | sign        | aa5161309638d773971cb968a6b35c5c | String |    Y     | Encrypted signature                                       |
 
-### Request parameter
+### Request example
 
 ```json
 {
@@ -391,7 +391,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 | time      |          1718150400000           | Number |    Y     | Current server timestamp in milliseconds |
 | sign      | aa5a36991257e8dece3c05cd8f9aab2f | String |    Y     | Encrypted signature                      |
 
-### Request parameter
+### Request example
 
 ```json
 {
@@ -446,7 +446,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 | time      |          1718150400000           | Number |    Y     | Current server timestamp in milliseconds |
 | sign      | 1526be641371c27c0e9c2857b636e6ab | String |    Y     | Encrypted signature                      |
 
-### Request parameter
+### Request example
 
 ```json
 {
@@ -545,7 +545,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 | time      |          1718150400000           | Number |    Y     | Current server timestamp in milliseconds |
 | sign      | f4c91395df1b944762293987f4c1fbab | String |    Y     | Encrypted signature                      |
 
-### Request parameter
+### Request example
 
 ```json
 {
@@ -611,7 +611,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 | time      |          1718150400000           | Number |    Y     | Current server timestamp in milliseconds                 |
 | sign      | 592c31d8817d92deb6be0d8bf97339cd | String |    Y     | Encrypted signature                                      |
 
-### Request parameter
+### Request example
 
 ```json
 {
@@ -677,7 +677,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 | time      |          1718150400000           | Number |    Y     | Current server timestamp in milliseconds |
 | sign      | f4c91395df1b944762293987f4c1fbab | String |    Y     | Encrypted signature                      |
 
-### Request parameter
+### Request example
 
 ```json
 {
