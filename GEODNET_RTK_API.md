@@ -108,7 +108,7 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 | username  |             geoduser             | String |    Y     | username                                 |
 | password  |             geodpass             | String |    Y     | password                                 |
 | email     |        `user@geodnet.com`        | String |    N     | email                                    |
-| trialDays |                7                 | Number |    Y     | Free trial days                          |
+| trialDays |                7                 | Number |    Y     | Free trial days, minimum value is 1      |
 | time      |          1718150400000           | Number |    Y     | Current server timestamp in milliseconds |
 | sign      | 8dd687e158219da6ccc689aef6c0a6a1 | String |    Y     | Encrypted signature                      |
 
@@ -224,13 +224,13 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 
 ### Request parameter
 
-| Parameter  |             Example              |  Type  | Required | Description                                  |
-| :--------- | :------------------------------: | :----: | :------: | :------------------------------------------- |
-| appId      |             geodnet              | String |    Y     | Application ID                               |
-| username   |             geoduser             | String |    Y     | username                                     |
-| expiration |          1735689600000           | Number |    Y     | Account expiration timestamp in milliseconds |
-| time       |          1718150400000           | Number |    Y     | Current server timestamp in milliseconds     |
-| sign       | 443a2f038aef0fbc53eefc3b90252af8 | String |    Y     | Encrypted signature                          |
+| Parameter  |             Example              |  Type  | Required | Description                                                                                |
+| :--------- | :------------------------------: | :----: | :------: | :----------------------------------------------------------------------------------------- |
+| appId      |             geodnet              | String |    Y     | Application ID                                                                             |
+| username   |             geoduser             | String |    Y     | username                                                                                   |
+| expiration |          1735689600000           | Number |    Y     | Account expiration timestamp in milliseconds, must be greater than the current server time |
+| time       |          1718150400000           | Number |    Y     | Current server timestamp in milliseconds                                                   |
+| sign       | 443a2f038aef0fbc53eefc3b90252af8 | String |    Y     | Encrypted signature                                                                        |
 
 ### Request example
 
@@ -728,12 +728,13 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 
 ### Status code list
 
-| Code | Description               |
-| :--- | :------------------------ |
-| 1000 | Success                   |
-| 1001 | Invalid appId             |
-| 1002 | appId is disabled         |
-| 1003 | sign error                |
-| 1004 | username already exists   |
-| 1005 | username does not exist   |
-| 1006 | the api is not authorized |
+| Code | Description                |
+| :--- | :------------------------- |
+| 1000 | Success                    |
+| 1001 | Invalid appId              |
+| 1002 | appId is disabled          |
+| 1003 | sign error                 |
+| 1004 | username already exists    |
+| 1005 | username does not exist    |
+| 1006 | the api is not authorized  |
+| 1007 | expiration time is invalid |
