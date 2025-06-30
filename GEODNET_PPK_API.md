@@ -11,6 +11,7 @@
 - [Download api](#download-api)
   - [Get the nearest stations](#get-the-nearest-stations)
   - [Create download order](#create-download-order)
+  - [Create NRCAN results file download order](#create-nrcan-results-file-download-order)
   - [Get download order status](#get-download-order-status)
   - [Download](#download)
 - [Base stations](#base-stations)
@@ -121,8 +122,8 @@ This document is mainly used to define the relevant APIs in the PPK service, inc
 
 ### Request parameter
 
-| Parameter | Example | Type  | Required | Description |
-| :-------- | :-----: | :---: | :------: | :---------- |
+| Parameter | Example | Type | Required | Description |
+| :-------- | :-----: | :--: | :------: | :---------- |
 
 ### Request example
 
@@ -314,6 +315,78 @@ If the stations are empty, it means there is no list of base stations that fulfi
 }
 ```
 
+### Create nrcan results file download order
+
+### Api description
+
+<table>
+  <tr>
+    <td>URL</td>
+    <td>https&#x3a;&#x2f;&#x2f;ppk.geodnet.com/api/estimation/download</td>
+  </tr>
+  <tr>
+    <td>Method</td>
+    <td>POST</td>
+  </tr>
+</table>
+
+### Request parameter
+
+| Parameter |  Example   |  Type  | Required | Description                                  |
+| :-------- | :--------: | :----: | :------: | :------------------------------------------- |
+| startDate | 2025-06-01 |  Date  |    Y     | Start date of the query (format: YYYY-MM-DD) |
+| endDate   | 2025-06-26 |  Date  |    Y     | End date of the query (format: YYYY-MM-DD)   |
+| station   |    G001    | String |    Y     | Base station name                            |
+
+### Request example
+
+```json
+{
+  "station": "G001",
+  "startDate": "2025-06-01",
+  "endDate": "2025-06-26"
+}
+```
+
+> [!CAUTION]
+> The interval between startDate and endDate can not exceed 30 days.
+
+### Request header
+
+| Parameter |      Example       |  Type  | Required | Description            |
+| :-------- | :----------------: | :----: | :------: | :--------------------- |
+| token     | eyJhbGciOiJIUzI1Ni | String |    Y     | Token got from sign in |
+
+### Response parameter
+
+| Parameter |         Example          |  Type  | Description             |
+| :-------- | :----------------------: | :----: | :---------------------- |
+| code      |           200            | Number | Status code             |
+| message   |         Success          | String | Status code description |
+| data      |                          | Object | Data content            |
+| orderId   | 685e5f63069bfe72e44d17fb | String | Order No.               |
+
+### Response example
+
+```json
+{
+  "code": 200,
+  "message": "Success",
+  "data": {
+    "orderId": "685e5f63069bfe72e44d17fb"
+  }
+}
+```
+
+> [!TIP]
+> List of NRCAN files in the archive, The following three files are NRCAN output files, the other files are ignored.
+
+```
+xxxx.pdf
+xxxx.sum
+errors.txt
+```
+
 ### Get download order status
 
 ### Api description
@@ -435,8 +508,8 @@ Get a list of all base stations, including precise coordinate information.
 
 ### Request parameter
 
-| Parameter | Example | Type  | Required | Description |
-| :-------- | :-----: | :---: | :------: | :---------- |
+| Parameter | Example | Type | Required | Description |
+| :-------- | :-----: | :--: | :------: | :---------- |
 
 ### Request example
 
@@ -558,15 +631,18 @@ https://ppk.geodnet.com/api/user/station/G001
 
 ### Status code list
 
-| Code | Description                              |
-| :--- | :--------------------------------------- |
-| 200  | Success                                  |
-| 201  | Request parameter error                  |
-| 202  | Username does not exist                  |
-| 203  | Password is incorrect                    |
-| 204  | Invalid account                          |
-| 301  | Incomplete date information              |
-| 302  | Invalid date parameter                   |
-| 303  | Request parameter error                  |
-| 304  | The download task has not been completed |
-| 501  | Request exception                        |
+| Code | Description                                         |
+| :--- | :-------------------------------------------------- |
+| 200  | Success                                             |
+| 201  | Request parameter error                             |
+| 202  | Username does not exist                             |
+| 203  | Password is incorrect                               |
+| 204  | Invalid account                                     |
+| 301  | Incomplete date information                         |
+| 302  | Invalid date parameter                              |
+| 303  | Request parameter error                             |
+| 304  | The download task has not been completed            |
+| 305  | The download task has failed                        |
+| 306  | The time period cannot exceed one month             |
+| 307  | Invalid stations or no data found during the period |
+| 501  | Request exception                                   |
