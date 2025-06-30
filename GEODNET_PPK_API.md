@@ -349,7 +349,7 @@ If the stations are empty, it means there is no list of base stations that fulfi
 ```
 
 > [!CAUTION]
-> The interval between startDate and endDate can not exceed 30 days.
+> The interval between startDate and endDate must not exceed 30 days.
 
 ### Request header
 
