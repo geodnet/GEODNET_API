@@ -7,6 +7,7 @@
 - [Document Description](#document-description)
 - [Api list](#api-list)
   - [Get the list of mountpoints](#get-the-list-of-mountpoints)
+  - [Replace mountpoint](#replace-mountpoint)
   - [Get the coordinates of the base stations](#get-the-coordinates-of-the-base-stations)
   - [Get the list of stations](#get-the-list-of-stations)
   - [Get qc data by hour](#get-qc-data-by-hour)
@@ -115,6 +116,59 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 }
 ```
 
+### Replace mountpoint
+
+### Api description
+
+<table>
+  <tr>
+    <td>URL</td>
+    <td>https&#x3a;&#x2f;&#x2f;rawdata.geodnet.com/api/rawdata/v1/replacement</td>
+  </tr>
+  <tr>
+    <td>Method</td>
+    <td>POST</td>
+  </tr>
+</table>
+
+### Request parameter
+
+| Parameter | Example |  Type  | Required | Description         |
+| :-------- | :-----: | :----: | :------: | :------------------ |
+| original  |  G001   | String |    Y     | Original mountpoint |
+| target    |  G002   | String |    Y     | Target mountpoint   |
+
+### Request example
+
+```json
+{
+  "original": "G001",
+  "target": "G002"
+}
+```
+
+### Request header
+
+| Parameter     |            Example             |  Type  | Required | Description               |
+| :------------ | :----------------------------: | :----: | :------: | :------------------------ |
+| Authorization | Basic Z2VvZHVzZXI6Z2VvZHBhc3M= | String |    Y     | Basic authentication data |
+
+### Response parameter
+
+| Parameter | Example |  Type  | Description             |
+| :-------- | :-----: | :----: | :---------------------- |
+| code      |  1000   | Number | Status code             |
+| msg       |   OK    | String | Status code description |
+
+### Response example
+
+```json
+{
+  "code": 1000,
+  "msg": "OK"
+}
+```
+
 ### Get the coordinates of the base stations
 
 ### Api description
@@ -217,18 +271,20 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 
 ### Response parameter
 
-| Parameter |    Example     |  Type  | Description             |
-| :-------- | :------------: | :----: | :---------------------- |
-| code      |      1000      | Number | Status code             |
-| msg       |       OK       | String | Status code description |
-| data      |                | Array  | Station list            |
-| name      |      G001      | String | Mountpoint              |
-| latitude  |  37.399903117  | Number | Latitude                |
-| longitude | -121.985978077 | Number | Longitude               |
-| height    |    -21.862     | Number | Height                  |
-| x         | -2687303.0419  | Number | X                       |
-| y         | -4302926.7402  | Number | Y                       |
-| z         |  3852731.2679  | Number | Z                       |
+| Parameter |    Example     |  Type  | Description                                             |
+| :-------- | :------------: | :----: | :------------------------------------------------------ |
+| code      |      1000      | Number | Status code                                             |
+| msg       |       OK       | String | Status code description                                 |
+| data      |                | Array  | Station list                                            |
+| name      |      G001      | String | Mountpoint                                              |
+| latitude  |  37.399903117  | Number | Latitude                                                |
+| longitude | -121.985978077 | Number | Longitude                                               |
+| height    |    -21.862     | Number | Height                                                  |
+| x         | -2687303.0419  | Number | X                                                       |
+| y         | -4302926.7402  | Number | Y                                                       |
+| z         |  3852731.2679  | Number | Z                                                       |
+| receiver  | HEMISPHERE P40 | String | Receiver information, if empty, need to wait for update |
+| antenna   |  HEMA45 NONE   | String | Antenna information, if empty, need to wait for update  |
 
 ### Response example
 
@@ -244,7 +300,9 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
       "height": -21.862,
       "x": -2687303.0419,
       "y": -4302926.7402,
-      "z": 3852731.2679
+      "z": 3852731.2679,
+      "receiver": "HEMISPHERE P40",
+      "antenna": "HEMA45 NONE"
     }
   ]
 }
@@ -486,16 +544,20 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 
 ### Status code list
 
-| Code | Description                            |
-| :--- | :------------------------------------- |
-| 1000 | Success                                |
-| 1001 | No authorization in the request header |
-| 1002 | Invalid authorization                  |
-| 1003 | The requested account does not exist   |
-| 1004 | Incorrect username or password         |
-| 1005 | Account disabled                       |
-| 1006 | Account expired                        |
-| 1007 | Request parameter error                |
-| 1008 | Invalid date parameter                 |
-| 1009 | The api is not authorized              |
-| 1010 | The time parameter is not satisfied    |
+| Code | Description                                            |
+| :--- | :----------------------------------------------------- |
+| 1000 | Success                                                |
+| 1001 | No authorization in the request header                 |
+| 1002 | Invalid authorization                                  |
+| 1003 | The requested account does not exist                   |
+| 1004 | Incorrect username or password                         |
+| 1005 | Account disabled                                       |
+| 1006 | Account expired                                        |
+| 1007 | Request parameter error                                |
+| 1008 | Invalid date parameter                                 |
+| 1009 | The api is not authorized                              |
+| 1010 | The time parameter is not satisfied                    |
+| 1011 | The target station is the same as the original station |
+| 1012 | The original station is not in your list               |
+| 1013 | The target station is already in your list             |
+| 1014 | The target station does not exist in the system        |
