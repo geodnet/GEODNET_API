@@ -10,6 +10,7 @@
   - [Replace mountpoint](#replace-mountpoint)
   - [Get the coordinates of the base stations](#get-the-coordinates-of-the-base-stations)
   - [Get the list of stations](#get-the-list-of-stations)
+  - [Get information about a specific station](#get-information-about-a-specific-station)
   - [Get qc data by hour](#get-qc-data-by-hour)
   - [Get qc data by station](#get-qc-data-by-station)
 - [Appendix](#appendix)
@@ -308,6 +309,78 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 }
 ```
 
+### Get information about a specific station
+
+### Api description
+
+<table>
+  <tr>
+    <td>URL</td>
+    <td>https&#x3a;&#x2f;&#x2f;rawdata.geodnet.com/api/rawdata/v1/station</td>
+  </tr>
+  <tr>
+    <td>Method</td>
+    <td>POST</td>
+  </tr>
+</table>
+
+### Request parameter
+
+| Parameter | Example |  Type  | Required | Description  |
+| :-------- | :-----: | :----: | :------: | :----------- |
+| name      |  G001   | String |    Y     | Station name |
+
+### Request example
+
+```
+{
+  "name": "G001"
+}
+```
+
+### Request header
+
+| Parameter     |            Example             |  Type  | Required | Description               |
+| :------------ | :----------------------------: | :----: | :------: | :------------------------ |
+| Authorization | Basic Z2VvZHVzZXI6Z2VvZHBhc3M= | String |    Y     | Basic authentication data |
+
+### Response parameter
+
+| Parameter |    Example     |  Type  | Description                                             |
+| :-------- | :------------: | :----: | :------------------------------------------------------ |
+| code      |      1000      | Number | Status code                                             |
+| msg       |       OK       | String | Status code description                                 |
+| data      |                | Object | Station information                                     |
+| name      |      G001      | String | Mountpoint                                              |
+| latitude  |  37.399903117  | Number | Latitude                                                |
+| longitude | -121.985978077 | Number | Longitude                                               |
+| height    |    -21.862     | Number | Height                                                  |
+| x         | -2687303.0419  | Number | X                                                       |
+| y         | -4302926.7402  | Number | Y                                                       |
+| z         |  3852731.2679  | Number | Z                                                       |
+| receiver  | HEMISPHERE P40 | String | Receiver information, if empty, need to wait for update |
+| antenna   |  HEMA45 NONE   | String | Antenna information, if empty, need to wait for update  |
+
+### Response example
+
+```json
+{
+  "code": 1000,
+  "msg": "OK",
+  "data": {
+    "name": "G001",
+    "latitude": 37.399903117,
+    "longitude": -121.985978077,
+    "height": -21.862,
+    "x": -2687303.0419,
+    "y": -4302926.7402,
+    "z": 3852731.2679,
+    "receiver": "HEMISPHERE P40",
+    "antenna": "HEMA45 NONE"
+  }
+}
+```
+
 ### Get qc data by hour
 
 ### Api description
@@ -561,3 +634,4 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 | 1012 | The original station is not in your list               |
 | 1013 | The target station is already in your list             |
 | 1014 | The target station does not exist in the system        |
+| 1015 | Invalid station                                        |
