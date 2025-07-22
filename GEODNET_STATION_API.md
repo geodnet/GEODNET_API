@@ -346,20 +346,29 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 
 ### Response parameter
 
-| Parameter |    Example     |  Type  | Description                                             |
-| :-------- | :------------: | :----: | :------------------------------------------------------ |
-| code      |      1000      | Number | Status code                                             |
-| msg       |       OK       | String | Status code description                                 |
-| data      |                | Object | Station information                                     |
-| name      |      G001      | String | Mountpoint                                              |
-| latitude  |  37.399903117  | Number | Latitude                                                |
-| longitude | -121.985978077 | Number | Longitude                                               |
-| height    |    -21.862     | Number | Height                                                  |
-| x         | -2687303.0419  | Number | X                                                       |
-| y         | -4302926.7402  | Number | Y                                                       |
-| z         |  3852731.2679  | Number | Z                                                       |
-| receiver  | HEMISPHERE P40 | String | Receiver information, if empty, need to wait for update |
-| antenna   |  HEMA45 NONE   | String | Antenna information, if empty, need to wait for update  |
+| Parameter   |    Example     |  Type  | Description                                                                |
+| :---------- | :------------: | :----: | :------------------------------------------------------------------------- |
+| code        |      1000      | Number | Status code                                                                |
+| msg         |       OK       | String | Status code description                                                    |
+| data        |                | Object | Station information                                                        |
+| name        |      G001      | String | Mountpoint                                                                 |
+| latitude    |  37.399903117  | Number | Latitude                                                                   |
+| longitude   | -121.985978077 | Number | Longitude                                                                  |
+| height      |    -21.862     | Number | Height                                                                     |
+| x           | -2687303.0419  | Number | X                                                                          |
+| y           | -4302926.7402  | Number | Y                                                                          |
+| z           |  3852731.2679  | Number | Z                                                                          |
+| receiver    | HEMISPHERE P40 | String | Receiver information, if empty, need to wait for update                    |
+| antenna     |  HEMA45 NONE   | String | Antenna information, if empty, need to wait for update                     |
+| coordinates |                | Array  | Precise coordinates (if empty, no valid precise coordinates are available) |
+| name        |    ITRF2020    | String | Coordinate reference frame                                                 |
+| epoch       |     2025.5     | String | Epoch                                                                      |
+| x           | -2687303.0592  | Number | X                                                                          |
+| y           | -4302926.7171  | Number | Y                                                                          |
+| z           |  3852731.263   | Number | Z                                                                          |
+| latitude    |  37.399903139  | Number | Latitude                                                                   |
+| longitude   | -121.985978381 | Number | Longitude                                                                  |
+| height      |    -21.873     | Number | Height                                                                     |
 
 ### Response example
 
@@ -369,14 +378,26 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
   "msg": "OK",
   "data": {
     "name": "G001",
-    "latitude": 37.399903117,
-    "longitude": -121.985978077,
-    "height": -21.862,
-    "x": -2687303.0419,
-    "y": -4302926.7402,
-    "z": 3852731.2679,
+    "latitude": 37.4,
+    "longitude": -121.99,
+    "height": -21.87,
+    "x": -2687303.0455,
+    "y": -4302926.7303,
+    "z": 3852731.2698,
     "receiver": "HEMISPHERE P40",
-    "antenna": "HEMA45 NONE"
+    "antenna": "HEMA45          NONE",
+    "coordinates": [
+      {
+        "name": "ITRF2020",
+        "epoch": 2025.5,
+        "x": -2687303.0592,
+        "y": -4302926.7171,
+        "z": 3852731.263,
+        "latitude": 37.399903139,
+        "longitude": -121.985978381,
+        "height": -21.873
+      }
+    ]
   }
 }
 ```
