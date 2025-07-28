@@ -286,6 +286,7 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 | z         |  3852731.2679  | Number | Z                                                       |
 | receiver  | HEMISPHERE P40 | String | Receiver information, if empty, need to wait for update |
 | antenna   |  HEMA45 NONE   | String | Antenna information, if empty, need to wait for update  |
+| status    |     ACTIVE     | String | base station status(ACTIVE,ONLINE,OFFLINE)              |
 
 ### Response example
 
@@ -303,7 +304,8 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
       "y": -4302926.7402,
       "z": 3852731.2679,
       "receiver": "HEMISPHERE P40",
-      "antenna": "HEMA45 NONE"
+      "antenna": "HEMA45 NONE",
+      "status": "ACTIVE"
     }
   ]
 }
