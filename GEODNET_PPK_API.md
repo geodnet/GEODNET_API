@@ -195,7 +195,7 @@ According to longitude, latitude, date, and time, get the nearest stations which
 
 ### Request example
 
-```json
+```
 https://ppk.geodnet.com/api/user/station?longitude=10&latitude=20
 ```
 
