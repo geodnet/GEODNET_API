@@ -196,10 +196,7 @@ According to longitude, latitude, date, and time, get the nearest stations which
 ### Request example
 
 ```json
-{
-  "longitude": "10",
-  "latitude": "20"
-}
+https://ppk.geodnet.com/api/user/station?longitude=10&latitude=20
 ```
 
 ### Request header
@@ -270,7 +267,7 @@ If the stations are empty, it means there is no list of base stations that fulfi
 | endDay     |    23    | Number |    Y     | day in which the download ends                 |
 | endHour    |    0     | Number |    Y     | hour in which the download ends                |
 | stations   | [“G001”] | Array  |    Y     | the station list                               |
-| type       |    1     | Number |    N     | Default download all<br>1: All<br>2: 30 second |
+| type       |    2     | Number |    N     | Default download all<br>1: All<br>2: 30 second |
 
 ### Request example
 
@@ -284,7 +281,8 @@ If the stations are empty, it means there is no list of base stations that fulfi
   "endMonth": 6,
   "endDay": 23,
   "endHour": 0,
-  "stations": ["G001"]
+  "stations": ["G001"],
+  "type": 2
 }
 ```
 
