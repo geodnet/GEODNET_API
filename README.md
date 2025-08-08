@@ -14,7 +14,7 @@ The station API is used to access the GEODNET base station information.
 
 This PPK API is used to download the rtcm data log files for each base station
 
-## [GEODNET GGA API](GEODNET_GGA_API.md)
+## [GEODNET GGA API (TBD)]
 
 This GGA API is used to pull the real-time GGA data upload from the RTK rover while requesting RTCM corrections.
 
