@@ -87,6 +87,9 @@ md5(“geodnetgeodpass17181504000007geoduser2916350764adb542”)
 
 ### Create account
 
+> [!TIP]
+> Please ensure that the username is unique within the GEODNET RTK ecosystem to avoid conflicts with the usernames of other enterprise customers.
+
 ### Api description
 
 <table>
