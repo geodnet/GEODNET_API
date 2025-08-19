@@ -26,6 +26,9 @@
 
 This document is mainly used to define the relevant APIs in the PPK service, including user login and data download.
 
+> [!IMPORTANT]  
+> In PPK, the account system is independent. Please make sure you have obtained a username and password from GEODNET before use.
+
 ### Http request
 
 <table>
