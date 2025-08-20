@@ -24,7 +24,7 @@
 
 ## Document Description
 
-This document is mainly used to define the relevant APIs in the PPK service, including user login and data download.
+This document is mainly intended for customers who need to obtain historical RTCM raw data. Customers can use the API we provide to download the required RTCM raw data.
 
 > [!IMPORTANT]  
 > In PPK, the account system is independent. Please make sure you have obtained a username and password from GEODNET before use.
@@ -323,7 +323,7 @@ If the stations are empty, it means there is no list of base stations that fulfi
 <table>
   <tr>
     <td>URL</td>
-    <td>https&#x3a;&#x2f;&#x2f;ppk.geodnet.com/api/estimation/download</td>
+    <td>https&#x3a;&#x2f;&#x2f;ppk.geodnet.com/api/user/estimation/download</td>
   </tr>
   <tr>
     <td>Method</td>
