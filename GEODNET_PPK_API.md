@@ -522,18 +522,25 @@ Get a list of all base stations, including precise coordinate information.
 
 ### Response parameter
 
-| Parameter  |                  Example                  |       Type       | Description                           |
-| :--------- | :---------------------------------------: | :--------------: | :------------------------------------ |
-| code       |                    200                    |      Number      | Status code                           |
-| message    |                  Success                  |      String      | Status code description               |
-| data       |                                           |      Object      | Data content                          |
-| stations   |                                           |      Array       | Station list                          |
-| name       |                   G001                    |      String      | Station name                          |
-| status     |                  ACTIVE                   |      String      | Station status(ONLINE,ACTIVE,OFFLINE) |
-| coordinate |                                           |      Object      | Coordinate info                       |
-| itrf       | [4865002.4922, 762212.7938, 4040242.9673] | Array<br>[x,y,z] | ITRF Coordinate                       |
-| wgs84      |  [4865002.489, 762212.791, 4040242.968]   | Array<br>[x,y,z] | WGS84 Coordinate                      |
-| local      | [4865003.0091, 762212.1315, 4040242.4896] | Array<br>[x,y,z] | Local Coordinate                      |
+| Parameter     |                   Example                    |       Type       | Description                           |
+| :------------ | :------------------------------------------: | :--------------: | :------------------------------------ |
+| code          |                     200                      |      Number      | Status code                           |
+| message       |                   Success                    |      String      | Status code description               |
+| data          |                                              |      Object      | Data content                          |
+| stations      |                                              |      Array       | Station list                          |
+| name          |                     G001                     |      String      | Station name                          |
+| status        |                    ACTIVE                    |      String      | Station status(ONLINE,ACTIVE,OFFLINE) |
+| coordinate    |                                              |      Object      | Coordinate info<br>(Deprecated)       |
+| itrf          | [-2687303.0592, -4302926.7171, 3852731.263]  | Array<br>[x,y,z] | Updated epoch coordinates of ITRF2020 |
+| itrf2015      | [-2687302.8158, -4302926.9653, 3852731.1618] | Array<br>[x,y,z] | 2015 epoch coordinates of ITRF2020    |
+| wgs84         | [-2687303.0595, -4302926.7172, 3852731.2649] | Array<br>[x,y,z] | WGS84 Coordinate                      |
+| local         | [-2687301.916, -4302928.3503, 3852731.1364]  | Array<br>[x,y,z] | Local Coordinate                      |
+| highPrecision |                                              |      Array       | High precision coordinate info        |
+| name          |              ITRF2020(2025.50)               |      String      | Coordinate system                     |
+| epoch         |                    2025.5                    |      Number      | Epoch                                 |
+| x             |                -2687303.0592                 |      Number      | X                                     |
+| y             |                -4302926.7171                 |      Number      | Y                                     |
+| z             |                 3852731.263                  |      Number      | Z                                     |
 
 > [!CAUTION]
 > If x,y,z is 0, the coordinates are invalid.
@@ -550,17 +557,48 @@ Get a list of all base stations, including precise coordinate information.
         "name": "G001",
         "status": "ACTIVE",
         "coordinate": {
-          "itrf": [4865002.4922, 762212.7938, 4040242.9673],
-          "wgs84": [4865002.489, 762212.791, 4040242.968],
-          "local": [4865003.0091, 762212.1315, 4040242.4896]
-        }
+          "itrf": [-2687303.0592, -4302926.7171, 3852731.263],
+          "itrf2015": [-2687302.8158, -4302926.9653, 3852731.1618],
+          "wgs84": [-2687303.0595, -4302926.7172, 3852731.2649],
+          "local": [-2687301.916, -4302928.3503, 3852731.1364]
+        },
+        "highPrecision": [
+          {
+            "name": "ITRF2020(2025.50)",
+            "epoch": 2025.5,
+            "x": -2687303.0592,
+            "y": -4302926.7171,
+            "z": 3852731.263
+          },
+          {
+            "name": "ITRF2020(2015.00)",
+            "epoch": 2015,
+            "x": -2687302.8158,
+            "y": -4302926.9653,
+            "z": 3852731.1618
+          },
+          {
+            "name": "WGS84(G2139)(2025.50)",
+            "epoch": 2025.5,
+            "x": -2687303.0595,
+            "y": -4302926.7172,
+            "z": 3852731.2649
+          },
+          {
+            "name": "NAD83(2011)(2010.00)",
+            "epoch": 2010,
+            "x": -2687301.916,
+            "y": -4302928.3503,
+            "z": 3852731.1364
+          }
+        ]
       }
     ]
   }
 }
 ```
 
-### Get station info
+### Get station information
 
 ### Api description
 
@@ -595,17 +633,24 @@ https://ppk.geodnet.com/api/user/station/G001
 
 ### Response parameter
 
-| Parameter  |                  Example                  |       Type       | Description                           |
-| :--------- | :---------------------------------------: | :--------------: | :------------------------------------ |
-| code       |                    200                    |      Number      | Status code                           |
-| message    |                  Success                  |      String      | Status code description               |
-| data       |                                           |      Object      | Data content                          |
-| name       |                   G001                    |      String      | Station name                          |
-| status     |                  ACTIVE                   |      String      | Station status(ONLINE,ACTIVE,OFFLINE) |
-| coordinate |                                           |      Object      | Coordinate info                       |
-| itrf       | [4865002.4922, 762212.7938, 4040242.9673] | Array<br>[x,y,z] | ITRF Coordinate                       |
-| wgs84      |  [4865002.489, 762212.791, 4040242.968]   | Array<br>[x,y,z] | WGS84 Coordinate                      |
-| local      | [4865003.0091, 762212.1315, 4040242.4896] | Array<br>[x,y,z] | Local Coordinate                      |
+| Parameter     |                   Example                    |       Type       | Description                           |
+| :------------ | :------------------------------------------: | :--------------: | :------------------------------------ |
+| code          |                     200                      |      Number      | Status code                           |
+| message       |                   Success                    |      String      | Status code description               |
+| data          |                                              |      Object      | Data content                          |
+| name          |                     G001                     |      String      | Station name                          |
+| status        |                    ACTIVE                    |      String      | Station status(ONLINE,ACTIVE,OFFLINE) |
+| coordinate    |                                              |      Object      | Coordinate info<br>(Deprecated)       |
+| itrf          | [-2687303.0592, -4302926.7171, 3852731.263]  | Array<br>[x,y,z] | Updated epoch coordinates of ITRF2020 |
+| itrf2015      | [-2687302.8158, -4302926.9653, 3852731.1618] | Array<br>[x,y,z] | 2015 epoch coordinates of ITRF2020    |
+| wgs84         | [-2687303.0595, -4302926.7172, 3852731.2649] | Array<br>[x,y,z] | WGS84 Coordinate                      |
+| local         | [-2687301.916, -4302928.3503, 3852731.1364]  | Array<br>[x,y,z] | Local Coordinate                      |
+| highPrecision |                                              |      Array       | High precision coordinate info        |
+| name          |              ITRF2020(2025.50)               |      String      | Coordinate system                     |
+| epoch         |                    2025.5                    |      Number      | Epoch                                 |
+| x             |                -2687303.0592                 |      Number      | X                                     |
+| y             |                -4302926.7171                 |      Number      | Y                                     |
+| z             |                 3852731.263                  |      Number      | Z                                     |
 
 > [!CAUTION]
 > If x,y,z is 0, the coordinates are invalid.
@@ -620,10 +665,41 @@ https://ppk.geodnet.com/api/user/station/G001
     "name": "G001",
     "status": "ACTIVE",
     "coordinate": {
-      "itrf": [4865002.4922, 762212.7938, 4040242.9673],
-      "wgs84": [4865002.489, 762212.791, 4040242.968],
-      "local": [4865003.0091, 762212.1315, 4040242.4896]
-    }
+      "itrf": [-2687303.0592, -4302926.7171, 3852731.263],
+      "itrf2015": [-2687302.8158, -4302926.9653, 3852731.1618],
+      "wgs84": [-2687303.0595, -4302926.7172, 3852731.2649],
+      "local": [-2687301.916, -4302928.3503, 3852731.1364]
+    },
+    "highPrecision": [
+      {
+        "name": "ITRF2020(2025.50)",
+        "epoch": 2025.5,
+        "x": -2687303.0592,
+        "y": -4302926.7171,
+        "z": 3852731.263
+      },
+      {
+        "name": "ITRF2020(2015.00)",
+        "epoch": 2015,
+        "x": -2687302.8158,
+        "y": -4302926.9653,
+        "z": 3852731.1618
+      },
+      {
+        "name": "WGS84(G2139)(2025.50)",
+        "epoch": 2025.5,
+        "x": -2687303.0595,
+        "y": -4302926.7172,
+        "z": 3852731.2649
+      },
+      {
+        "name": "NAD83(2011)(2010.00)",
+        "epoch": 2010,
+        "x": -2687301.916,
+        "y": -4302928.3503,
+        "z": 3852731.1364
+      }
+    ]
   }
 }
 ```
