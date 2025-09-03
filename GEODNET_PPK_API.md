@@ -29,6 +29,7 @@
 > 3. Create a download order with time range and station list.
 > 4. Poll the order status until Completed.
 > 5. Download the resulting file using the orderId.
+> 6. Convert the rtcm file to rinex format using the open-source rtklib tool (convbin.exe window binary https://github.com/geodnet/rtklib_lte/tree/main/bin)
 
 <!-- /TOC -->
 
@@ -853,6 +854,17 @@ curl -L "https://ppk.geodnet.com/api/download/$ORDER" -H "token: $TOKEN" -o "geo
 > [!NOTE]
 > Steps are identical for NRCAN results, except step 2 uses /api/user/estimation/download with startDate, endDate, station.
 
+5. Convert to Rinex
+   
+Need to download the open-source convert tool from https://github.com/geodnet/rtklib_lte, the window binary is already included, you need to build the convbin project for linux or mac platform  
+
+```shell
+convbin.exe -r rtcm3 -tr year/mon/day hour:min:sec unziped_rtcm_file
+```
+
+> [!NOTE]
+> year, mon, day, hour, min, sec are the approximate time of the rtcm log file (not the time you download the file)   
+> use -v 2.11 to output rinex 2.11 legacy version
 
 ## Appendix
 
