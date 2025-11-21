@@ -366,7 +366,8 @@ curl -X POST "https://ppk.geodnet.com/api/user/download" \
     "endDay": 23,
     "endHour": 0,
     "stations": ["G001"],
-    "type": 2
+    "type": 2,
+    "fileType": 0
   }'
 ```
 
