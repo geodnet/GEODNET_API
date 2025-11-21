@@ -316,6 +316,7 @@ curl -G "https://ppk.geodnet.com/api/user/station" \
 | endHour    |    0     | Number |    Y     | hour in which the download ends                |
 | stations   | [“G001”] | Array  |    Y     | the station list                               |
 | type       |    2     | Number |    N     | Default download all<br>1: All<br>2: 30 second |
+| fileType   |    0     | Number |    N     | Default RTCM<br>0: RTCM<br>1: RINEX 3.04<br>2: RINEX 2.11|
 
 ### Request example
 
@@ -330,7 +331,8 @@ curl -G "https://ppk.geodnet.com/api/user/station" \
   "endDay": 23,
   "endHour": 0,
   "stations": ["G001"],
-  "type": 2
+  "type": 2,
+  "fileType": 0
 }
 ```
 
