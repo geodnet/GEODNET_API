@@ -7,6 +7,7 @@
 - [Document Description](#document-description)
 - [Api list](#api-list)
   - [Get the list of mountpoints](#get-the-list-of-mountpoints)
+  - [Add Station](#add-station)
   - [Replace mountpoint](#replace-mountpoint)
   - [Get the coordinates of the base stations](#get-the-coordinates-of-the-base-stations)
   - [Get the list of stations](#get-the-list-of-stations)
@@ -35,7 +36,7 @@ The username and password are the identifiers that uniquely identify the custome
 
 The api uses the http basic authentication method, which is consistent with the ntrip authentication method.
 
-The Authorization header field is constructed as follows:
+The Authorization header field is constructed as follows:
 
 1. The username and password are combined with a single colon (:). This means that the username itself cannot contain a colon.
 2. The resulting string is encoded into an octet sequence. The character set for this encoding is unspecified by default, but it must be compatible with US-ASCII; however, the server may suggest using UTF-8 by indicating the charset parameter.
@@ -63,7 +64,7 @@ geoduser:geodpass
 Z2VvZHVzZXI6Z2VvZHBhc3M=
 ```
 
-- Generate “Authorization” in request header
+- Generate "Authorization" in request header
 
 ```
 Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
@@ -88,10 +89,7 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 
 ### Request parameter
 
-| Parameter | Example | Type | Required | Description |
-| :-------- | :-----: | :--: | :------: | :---------- |
-
-### Request example
+None
 
 ### Request header
 
@@ -114,6 +112,57 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
   "code": 1000,
   "msg": "OK",
   "data": ["G001", "G002"]
+}
+```
+
+### Add Station
+
+### Api description
+
+<table>
+  <tr>
+    <td>URL</td>
+    <td>https&#x3a;&#x2f;&#x2f;rawdata.geodnet.com/api/rawdata/v1/add</td>
+  </tr>
+  <tr>
+    <td>Method</td>
+    <td>POST</td>
+  </tr>
+</table>
+
+### Request parameter
+
+| Parameter  | Example |  Type  | Required | Description       |
+| :--------- | :-----: | :----: | :------: | :---------------- |
+| mountpoint |  G001   | String |    Y     | Mountpoint to add |
+
+### Request example
+
+```json
+{
+  "mountpoint": "G001"
+}
+```
+
+### Request header
+
+| Parameter     |            Example             |  Type  | Required | Description               |
+| :------------ | :----------------------------: | :----: | :------: | :------------------------ |
+| Authorization | Basic Z2VvZHVzZXI6Z2VvZHBhc3M= | String |    Y     | Basic authentication data |
+
+### Response parameter
+
+| Parameter | Example |  Type  | Description             |
+| :-------- | :-----: | :----: | :---------------------- |
+| code      |  1000   | Number | Status code             |
+| msg       |   OK    | String | Status code description |
+
+### Response example
+
+```json
+{
+  "code": 1000,
+  "msg": "OK"
 }
 ```
 
@@ -187,10 +236,7 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 
 ### Request parameter
 
-| Parameter | Example | Type | Required | Description |
-| :-------- | :-----: | :--: | :------: | :---------- |
-
-### Request example
+None
 
 ### Request header
 
@@ -200,21 +246,21 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 
 ### Response parameter
 
-| Parameter   |    Example     |  Type  | Description                     |
-| :---------- | :------------: | :----: | :------------------------------ |
-| code        |      1000      | Number | Status code                     |
-| msg         |       OK       | String | Status code description         |
-| data        |                | Array  | Coordinate list                 |
-| mountpoint  |      G001      | String | Mountpoint                      |
-| coordinates |                | Array  | Detailed coordinate information |
-| name        |    ITRF2020    | String | Coordinate system name          |
-| epoch       |    2024.36     | Number | Epoch                           |
-| x           | -2687303.0419  | Number | X                               |
-| y           | -4302926.7402  | Number | Y                               |
-| z           |  3852731.2679  | Number | Z                               |
-| latitude    |  37.399903117  | Number | Latitude                        |
-| longitude   | -121.985978077 | Number | Longitude                       |
-| height      |    -21.862     | Number | Height                          |
+| Parameter                        |    Example     |  Type  | Description                     |
+| :------------------------------- | :------------: | :----: | :------------------------------ |
+| code                             |      1000      | Number | Status code                     |
+| msg                              |       OK       | String | Status code description         |
+| data                             |                | Array  | Coordinate list                 |
+| data[].mountpoint                |      G001      | String | Mountpoint                      |
+| data[].coordinates               |                | Array  | Detailed coordinate information |
+| data[].coordinates[].name        |    ITRF2020    | String | Coordinate system name          |
+| data[].coordinates[].epoch       |    2024.36     | Number | Epoch                           |
+| data[].coordinates[].x           | -2687303.0419  | Number | X                               |
+| data[].coordinates[].y           | -4302926.7402  | Number | Y                               |
+| data[].coordinates[].z           |  3852731.2679  | Number | Z                               |
+| data[].coordinates[].latitude    |  37.399903117  | Number | Latitude                        |
+| data[].coordinates[].longitude   | -121.985978077 | Number | Longitude                       |
+| data[].coordinates[].height      |    -21.862     | Number | Height                          |
 
 ### Response example
 
@@ -259,10 +305,7 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 
 ### Request parameter
 
-| Parameter | Example | Type | Required | Description |
-| :-------- | :-----: | :--: | :------: | :---------- |
-
-### Request example
+None
 
 ### Request header
 
@@ -272,21 +315,21 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 
 ### Response parameter
 
-| Parameter |    Example     |  Type  | Description                                             |
-| :-------- | :------------: | :----: | :------------------------------------------------------ |
-| code      |      1000      | Number | Status code                                             |
-| msg       |       OK       | String | Status code description                                 |
-| data      |                | Array  | Station list                                            |
-| name      |      G001      | String | Mountpoint                                              |
-| latitude  |  37.399903117  | Number | Latitude                                                |
-| longitude | -121.985978077 | Number | Longitude                                               |
-| height    |    -21.862     | Number | Height                                                  |
-| x         | -2687303.0419  | Number | X                                                       |
-| y         | -4302926.7402  | Number | Y                                                       |
-| z         |  3852731.2679  | Number | Z                                                       |
-| receiver  | HEMISPHERE P40 | String | Receiver information, if empty, need to wait for update |
-| antenna   |  HEMA45 NONE   | String | Antenna information, if empty, need to wait for update  |
-| status    |     ACTIVE     | String | base station status(ACTIVE,ONLINE,OFFLINE)              |
+| Parameter      |    Example     |  Type  | Description                                             |
+| :------------- | :------------: | :----: | :------------------------------------------------------ |
+| code           |      1000      | Number | Status code                                             |
+| msg            |       OK       | String | Status code description                                 |
+| data           |                | Array  | Station list                                            |
+| data[].name      |      G001      | String | Mountpoint                                              |
+| data[].latitude  |  37.399903117  | Number | Latitude                                                |
+| data[].longitude | -121.985978077 | Number | Longitude                                               |
+| data[].height    |    -21.862     | Number | Height                                                  |
+| data[].x         | -2687303.0419  | Number | X                                                       |
+| data[].y         | -4302926.7402  | Number | Y                                                       |
+| data[].z         |  3852731.2679  | Number | Z                                                       |
+| data[].receiver  | HEMISPHERE P40 | String | Receiver information (may be empty until updated)       |
+| data[].antenna   |  HEMA45 NONE   | String | Antenna information (may be empty until updated)        |
+| data[].status    |     ACTIVE     | String | Base station status (ACTIVE, ONLINE, OFFLINE)           |
 
 ### Response example
 
@@ -334,7 +377,7 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 
 ### Request example
 
-```
+```json
 {
   "name": "G001"
 }
@@ -348,29 +391,29 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 
 ### Response parameter
 
-| Parameter   |    Example     |  Type  | Description                                                                |
-| :---------- | :------------: | :----: | :------------------------------------------------------------------------- |
-| code        |      1000      | Number | Status code                                                                |
-| msg         |       OK       | String | Status code description                                                    |
-| data        |                | Object | Station information                                                        |
-| name        |      G001      | String | Mountpoint                                                                 |
-| latitude    |  37.399903117  | Number | Latitude                                                                   |
-| longitude   | -121.985978077 | Number | Longitude                                                                  |
-| height      |    -21.862     | Number | Height                                                                     |
-| x           | -2687303.0419  | Number | X                                                                          |
-| y           | -4302926.7402  | Number | Y                                                                          |
-| z           |  3852731.2679  | Number | Z                                                                          |
-| receiver    | HEMISPHERE P40 | String | Receiver information, if empty, need to wait for update                    |
-| antenna     |  HEMA45 NONE   | String | Antenna information, if empty, need to wait for update                     |
-| coordinates |                | Array  | Precise coordinates (if empty, no valid precise coordinates are available) |
-| name        |    ITRF2020    | String | Coordinate reference frame                                                 |
-| epoch       |     2025.5     | String | Epoch                                                                      |
-| x           | -2687303.0592  | Number | X                                                                          |
-| y           | -4302926.7171  | Number | Y                                                                          |
-| z           |  3852731.263   | Number | Z                                                                          |
-| latitude    |  37.399903139  | Number | Latitude                                                                   |
-| longitude   | -121.985978381 | Number | Longitude                                                                  |
-| height      |    -21.873     | Number | Height                                                                     |
+| Parameter                       |    Example     |  Type  | Description                                                                |
+| :------------------------------ | :------------: | :----: | :------------------------------------------------------------------------- |
+| code                            |      1000      | Number | Status code                                                                |
+| msg                             |       OK       | String | Status code description                                                    |
+| data                            |                | Object | Station information                                                        |
+| data.name                       |      G001      | String | Mountpoint                                                                 |
+| data.latitude                   |  37.399903117  | Number | Latitude                                                                   |
+| data.longitude                  | -121.985978077 | Number | Longitude                                                                  |
+| data.height                     |    -21.862     | Number | Height                                                                     |
+| data.x                          | -2687303.0419  | Number | X                                                                          |
+| data.y                          | -4302926.7402  | Number | Y                                                                          |
+| data.z                          |  3852731.2679  | Number | Z                                                                          |
+| data.receiver                   | HEMISPHERE P40 | String | Receiver information (if empty, need to wait for update)                   |
+| data.antenna                    |  HEMA45 NONE   | String | Antenna information (if empty, need to wait for update)                    |
+| data.coordinates                |                | Array  | Precise coordinates (if empty, no valid precise coordinates are available) |
+| data.coordinates[].name         |    ITRF2020    | String | Coordinate reference frame                                                 |
+| data.coordinates[].epoch        |     2025.5     | String | Epoch                                                                      |
+| data.coordinates[].x            | -2687303.0592  | Number | X                                                                          |
+| data.coordinates[].y            | -4302926.7171  | Number | Y                                                                          |
+| data.coordinates[].z            |  3852731.263   | Number | Z                                                                          |
+| data.coordinates[].latitude     |  37.399903139  | Number | Latitude                                                                   |
+| data.coordinates[].longitude    | -121.985978381 | Number | Longitude                                                                  |
+| data.coordinates[].height       |    -21.873     | Number | Height                                                                     |
 
 ### Response example
 
@@ -426,7 +469,7 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 | time      | 1745107200000 | Number |    Y     | GNSS hourly integer timestamp in milliseconds |
 
 > [!CAUTION]
-> Query data within the last 30 days, the minimum time can not exceed 30 days
+> Query data within the last 30 days, the minimum time cannot exceed 30 days ago.
 
 ### Request example
 
@@ -444,32 +487,32 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 
 ### Response parameter
 
-| Parameter  |    Example    |  Type  | Description                                                   |
-| :--------- | :-----------: | :----: | :------------------------------------------------------------ |
-| code       |     1000      | Number | Status code                                                   |
-| msg        |      OK       | String | Status code description                                       |
-| data       |               | Array  | Qc data list                                                  |
-| name       | 9CB8B45200AC  | String | Station name                                                  |
-| time       | 1745107200000 | Number | GNSS hourly integer timestamp in milliseconds                 |
-| numObs     |     73006     | Number | Complete observations                                         |
-| expEpoch   |     3600      | Number | Epochs w/ observations                                        |
-| numEpoch   |     3600      | Number | Poss. # of obs epochs                                         |
-| rate       |      100      | Number | Data availability(%)                                          |
-| crcFailure |       0       | Number | Crc Failure                                                   |
-| iodSlip    |      17       | Number | IOD slips                                                     |
-| mpSlip     |      11       | Number | MP slips                                                      |
-| oslps      |     6637      | Number | o/slps                                                        |
-| mp         |               | Object | Multipath data, output based on actual data from base station |
-| mp12       |   0.300448    | Number | MP12                                                          |
-| mp21       |   0.222476    | Number | MP21                                                          |
-| mp15       |   0.256043    | Number | MP15                                                          |
-| mp51       |   0.187583    | Number | MP51                                                          |
-| mp16       |   0.225621    | Number | MP16                                                          |
-| mp61       |   0.190742    | Number | MP61                                                          |
-| mp17       |    0.23988    | Number | MP17                                                          |
-| mp71       |   0.166079    | Number | MP71                                                          |
-| mp18       |   0.227361    | Number | MP18                                                          |
-| mp81       |    0.05697    | Number | MP81                                                          |
+| Parameter        |    Example    |  Type  | Description                                                   |
+| :--------------- | :-----------: | :----: | :------------------------------------------------------------ |
+| code             |     1000      | Number | Status code                                                   |
+| msg              |      OK       | String | Status code description                                       |
+| data             |               | Array  | Qc data list                                                  |
+| data[].name      | 9CB8B45200AC  | String | Station name                                                  |
+| data[].time      | 1745107200000 | Number | GNSS hourly integer timestamp in milliseconds                 |
+| data[].numObs    |     73006     | Number | Complete observations                                         |
+| data[].expEpoch  |     3600      | Number | Epochs w/ observations                                        |
+| data[].numEpoch  |     3600      | Number | Poss. # of obs epochs                                         |
+| data[].rate      |      100      | Number | Data availability (%)                                         |
+| data[].crcFailure |       0       | Number | CRC failure                                                  |
+| data[].iodSlip   |      17       | Number | IOD slips                                                     |
+| data[].mpSlip    |      11       | Number | MP slips                                                      |
+| data[].oslps     |     6637      | Number | o/slps                                                        |
+| data[].mp        |               | Object | Multipath data, output based on actual data from base station |
+| data[].mp.mp12   |   0.300448    | Number | MP12                                                          |
+| data[].mp.mp21   |   0.222476    | Number | MP21                                                          |
+| data[].mp.mp15   |   0.256043    | Number | MP15                                                          |
+| data[].mp.mp51   |   0.187583    | Number | MP51                                                          |
+| data[].mp.mp16   |   0.225621    | Number | MP16                                                          |
+| data[].mp.mp61   |   0.190742    | Number | MP61                                                          |
+| data[].mp.mp17   |    0.23988    | Number | MP17                                                          |
+| data[].mp.mp71   |   0.166079    | Number | MP71                                                          |
+| data[].mp.mp18   |   0.227361    | Number | MP18                                                          |
+| data[].mp.mp81   |    0.05697    | Number | MP81                                                          |
 
 ### Response example
 
@@ -530,7 +573,7 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 | end       | 1745110800000 | Number |    Y     | End time, integer timestamp in milliseconds of GNSS hour   |
 
 > [!CAUTION]
-> Query data within the last 30 days, the minimum time can not exceed 30 days
+> Query data within the last 30 days, the minimum time cannot exceed 30 days ago.
 
 ### Request example
 
@@ -550,32 +593,32 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 
 ### Response parameter
 
-| Parameter  |    Example    |  Type  | Description                                                   |
-| :--------- | :-----------: | :----: | :------------------------------------------------------------ |
-| code       |     1000      | Number | Status code                                                   |
-| msg        |      OK       | String | Status code description                                       |
-| data       |               | Array  | Qc data list                                                  |
-| name       | 9CB8B45200AC  | String | Station name                                                  |
-| time       | 1745107200000 | Number | GNSS hourly integer timestamp in milliseconds                 |
-| numObs     |     73006     | Number | Complete observations                                         |
-| expEpoch   |     3600      | Number | Epochs w/ observations                                        |
-| numEpoch   |     3600      | Number | Poss. # of obs epochs                                         |
-| rate       |      100      | Number | Data availability(%)                                          |
-| crcFailure |       0       | Number | Crc Failure                                                   |
-| iodSlip    |      17       | Number | IOD slips                                                     |
-| mpSlip     |      11       | Number | MP slips                                                      |
-| oslps      |     6637      | Number | o/slps                                                        |
-| mp         |               | Object | Multipath data, output based on actual data from base station |
-| mp12       |   0.300448    | Number | MP12                                                          |
-| mp21       |   0.222476    | Number | MP21                                                          |
-| mp15       |   0.256043    | Number | MP15                                                          |
-| mp51       |   0.187583    | Number | MP51                                                          |
-| mp16       |   0.225621    | Number | MP16                                                          |
-| mp61       |   0.190742    | Number | MP61                                                          |
-| mp17       |    0.23988    | Number | MP17                                                          |
-| mp71       |   0.166079    | Number | MP71                                                          |
-| mp18       |   0.227361    | Number | MP18                                                          |
-| mp81       |    0.05697    | Number | MP81                                                          |
+| Parameter        |    Example    |  Type  | Description                                                   |
+| :--------------- | :-----------: | :----: | :------------------------------------------------------------ |
+| code             |     1000      | Number | Status code                                                   |
+| msg              |      OK       | String | Status code description                                       |
+| data             |               | Array  | Qc data list                                                  |
+| data[].name      | 9CB8B45200AC  | String | Station name                                                  |
+| data[].time      | 1745107200000 | Number | GNSS hourly integer timestamp in milliseconds                 |
+| data[].numObs    |     73006     | Number | Complete observations                                         |
+| data[].expEpoch  |     3600      | Number | Epochs w/ observations                                        |
+| data[].numEpoch  |     3600      | Number | Poss. # of obs epochs                                         |
+| data[].rate      |      100      | Number | Data availability (%)                                         |
+| data[].crcFailure |       0       | Number | CRC failure                                                  |
+| data[].iodSlip   |      17       | Number | IOD slips                                                     |
+| data[].mpSlip    |      11       | Number | MP slips                                                      |
+| data[].oslps     |     6637      | Number | o/slps                                                        |
+| data[].mp        |               | Object | Multipath data, output based on actual data from base station |
+| data[].mp.mp12   |   0.300448    | Number | MP12                                                          |
+| data[].mp.mp21   |   0.222476    | Number | MP21                                                          |
+| data[].mp.mp15   |   0.256043    | Number | MP15                                                          |
+| data[].mp.mp51   |   0.187583    | Number | MP51                                                          |
+| data[].mp.mp16   |   0.225621    | Number | MP16                                                          |
+| data[].mp.mp61   |   0.190742    | Number | MP61                                                          |
+| data[].mp.mp17   |    0.23988    | Number | MP17                                                          |
+| data[].mp.mp71   |   0.166079    | Number | MP71                                                          |
+| data[].mp.mp18   |   0.227361    | Number | MP18                                                          |
+| data[].mp.mp81   |    0.05697    | Number | MP81                                                          |
 
 ### Response example
 
@@ -640,21 +683,25 @@ Authorization: Basic Z2VvZHVzZXI6Z2VvZHBhc3M=
 
 ### Status code list
 
-| Code | Description                                            |
-| :--- | :----------------------------------------------------- |
-| 1000 | Success                                                |
-| 1001 | No authorization in the request header                 |
-| 1002 | Invalid authorization                                  |
-| 1003 | The requested account does not exist                   |
-| 1004 | Incorrect username or password                         |
-| 1005 | Account disabled                                       |
-| 1006 | Account expired                                        |
-| 1007 | Request parameter error                                |
-| 1008 | Invalid date parameter                                 |
-| 1009 | The api is not authorized                              |
-| 1010 | The time parameter is not satisfied                    |
-| 1011 | The target station is the same as the original station |
-| 1012 | The original station is not in your list               |
-| 1013 | The target station is already in your list             |
-| 1014 | The target station does not exist in the system        |
-| 1015 | Invalid station                                        |
+| Code   | Description                                            |
+| :----- | :----------------------------------------------------- |
+| `1000` | Success                                                |
+| `1001` | No authorization in the request header                 |
+| `1002` | Invalid authorization                                  |
+| `1003` | The requested account does not exist                   |
+| `1004` | Incorrect username or password                         |
+| `1005` | Account disabled                                       |
+| `1006` | Account expired                                        |
+| `1007` | Request parameter error                                |
+| `1008` | Invalid date parameter                                 |
+| `1009` | The api is not authorized                              |
+| `1010` | The time parameter is not satisfied                    |
+| `1011` | The target station is the same as the original station |
+| `1012` | The original station is not in your list               |
+| `1013` | The target station is already in your list             |
+| `1014` | The target station does not exist in the system        |
+| `1015` | Invalid station                                        |
+| `1016` | Only data from the last 6 months (UTC time) can be queried |
+| `1017` | End time must be greater than start time               |
+| `1018` | No group information                                   |
+| `1019` | Reach the maximum limit                                |
