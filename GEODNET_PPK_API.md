@@ -20,6 +20,15 @@
 - [Appendix](#appendix)
   - [Status code list](#status-code-list)
 
+<!-- /TOC -->
+
+## Document Description
+
+This document is mainly intended for customers who need to obtain historical RTCM raw data. Customers can use the API we provide to download the required RTCM raw data.
+
+> [!IMPORTANT]
+> In PPK, the account system is independent. Please make sure you have obtained a username and password from GEODNET before use.
+
 ## API Usage Flow
 
 > [!NOTE]
@@ -31,32 +40,25 @@
 > 5. Download the resulting file using the orderId.
 > 6. Convert the rtcm file to rinex format using the open-source rtklib tool (convbin.exe window binary https://github.com/geodnet/rtklib_lte/tree/main/bin)
 
-<!-- /TOC -->
-
-## Document Description
-
-This document is mainly intended for customers who need to obtain historical RTCM raw data. Customers can use the API we provide to download the required RTCM raw data.
-
-> [!IMPORTANT]  
-> In PPK, the account system is independent. Please make sure you have obtained a username and password from GEODNET before use.
-
 ### Http request
 
 <table>
   <tr>
-    <td>Base URL</td> <td>https&#x3a;&#x2f;&#x2f;ppk.geodnet.com</td>
+    <td>Base URL</td>
+    <td>https&#x3a;&#x2f;&#x2f;ppk.geodnet.com</td>
   </tr>
   <tr>
     <td>Methods</td>
     <td>GET / POST</td>
   </tr>
   <tr>
-    <td>Content-Type</td> <td>application/json (unless otherwise noted)</td>
+    <td>Content-Type</td>
+    <td>application/json (unless otherwise noted)</td>
   </tr>
   <tr>
     <td>Auth</td>
     <td>Request header: <code>token: &lt;JWT&gt;</code> (after sign in)</td>
-  </tr> 
+  </tr>
 </table>
 
 ### Http response
@@ -70,6 +72,7 @@ This document is mainly intended for customers who need to obtain historical RTC
 ## User api
 
 ### Sign in account
+
 - Purpose: Obtain a JWT token for subsequent authenticated requests.
 - Request method: POST (body: JSON)
 
@@ -103,6 +106,7 @@ This document is mainly intended for customers who need to obtain historical RTC
 ```
 
 ### cURL
+
 ```shell
 curl -X POST "https://ppk.geodnet.com/api/user/signin" \
   -H "Content-Type: application/json" \
@@ -111,12 +115,12 @@ curl -X POST "https://ppk.geodnet.com/api/user/signin" \
 
 ### Response parameter
 
-| Parameter |                          Example                          |  Type  | Description                                                       |
-| :-------- | :-------------------------------------------------------: | :----: | :---------------------------------------------------------------- |
-| code      |                            200                            | Number | Status code                                                       |
-| message   |                          Success                          | String | Status code description                                           |
-| data      |                                                           | Object | Data content                                                      |
-| token     | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imdl | String | JWT token. Use it in request header: <code>token: \<JWT\></code>    |
+| Parameter |                          Example                           |  Type  | Description                                                    |
+| :-------- | :--------------------------------------------------------: | :----: | :------------------------------------------------------------- |
+| code      |                            200                             | Number | Status code                                                    |
+| message   |                          Success                           | String | Status code description                                        |
+| data      |                                                            | Object | Data content                                                   |
+| token     | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imdl | String | JWT token. Use it in request header: <code>token: \<JWT\></code> |
 
 ### Response example
 
@@ -130,7 +134,11 @@ curl -X POST "https://ppk.geodnet.com/api/user/signin" \
 }
 ```
 
+> [!IMPORTANT]
+> The token generated at each login is valid for seven days.
+
 ### Get user information
+
 - Purpose: Query current user profile and account stats.
 - Request method: GET (header: token)
 
@@ -147,14 +155,7 @@ curl -X POST "https://ppk.geodnet.com/api/user/signin" \
   </tr>
 </table>
 
-### Request parameter
-
-| Parameter | Example | Type | Required | Description |
-| :-------- | :-----: | :--: | :------: | :---------- |
-
-### Request example
-
-### Request header (Query params)
+### Request header
 
 | Parameter |      Example       |  Type  | Required | Description            |
 | :-------- | :----------------: | :----: | :------: | :--------------------- |
@@ -174,6 +175,7 @@ curl -X POST "https://ppk.geodnet.com/api/user/signin" \
 | expense    |         0          | Number | Expense                                |
 
 ### cURL
+
 ```shell
 curl -X GET "https://ppk.geodnet.com/api/user/info" \
   -H "token: eyJhbGciOiJIUzI1Ni..."
@@ -199,13 +201,13 @@ curl -X GET "https://ppk.geodnet.com/api/user/info" \
 
 ### Get the nearest stations
 
-### Api description
-
 - Purpose: Get nearest stations by coordinates; optionally filter by a specific UTC date-time that has data.
 - Request method: GET (query + header: token)
 
 According to longitude and latitude, get the nearest stations.
 According to longitude, latitude, date, and time, get the nearest stations which have data available at the specified time.
+
+### Api description
 
 <table>
   <tr>
@@ -220,14 +222,14 @@ According to longitude, latitude, date, and time, get the nearest stations which
 
 ### Request parameter (Query params)
 
-| Parameter | Example |  Type  | Required | Description                         |
-| :-------- | :-----: | :----: | :------: | :---------------------------------- |
-| longitude |   10    | String |    Y     | Longitude (decimal degrees)         |
-| latitude  |   20    | String |    Y     | Latitude (decimal degrees)          |
-| year      |  2024   | String |    N     | UTC year for data availability      |
-| month     |    6    | String |    N     | UTC month                           |
-| day       |   22    | String |    N     | UTC day                             |
-| hour      |    0    | String |    N     | UTC hour                            |
+| Parameter | Example |  Type  | Required | Description                    |
+| :-------- | :-----: | :----: | :------: | :----------------------------- |
+| longitude |   10    | String |    Y     | Longitude (decimal degrees)    |
+| latitude  |   20    | String |    Y     | Latitude (decimal degrees)     |
+| year      |  2024   | String |    N     | UTC year for data availability |
+| month     |    6    | String |    N     | UTC month                      |
+| day       |   22    | String |    N     | UTC day                        |
+| hour      |    0    | String |    N     | UTC hour                       |
 
 > If year/month/day/hour provided, stations are filtered by data availability at that UTC time.
 
@@ -245,18 +247,19 @@ https://ppk.geodnet.com/api/user/station?longitude=10&latitude=20
 
 ### Response parameter
 
-| Parameter | Example |  Type  | Description                             |
-| :-------- | :-----: | :----: | :-------------------------------------- |
-| code      |   200   | Number | Status code                             |
-| message   | Success | String | Status code description                 |
-| data      |         | Object | Data content                            |
-| stations  |         | Array  | Station list                            |
-| name      |  G001   | String | station name                            |
-| distance  |  10.23  | Number | distance from the station in kilometers |
+| Parameter          | Example |  Type  | Description                                    |
+| :----------------- | :-----: | :----: | :--------------------------------------------- |
+| code               |   200   | Number | Status code                                    |
+| message            | Success | String | Status code description                        |
+| data               |         | Object | Data content                                   |
+| data.stations      |         | Array  | Station list                                   |
+| data.stations[].name |  G001   | String | Station name                                 |
+| data.stations[].distance | 10.23 | Number | Distance from the station in kilometers   |
 
-If the stations are empty, it means there is no list of base stations that fulfill the condition
+If the stations are empty, it means there is no list of base stations that fulfill the condition.
 
 ### cURL
+
 ```shell
 curl -G "https://ppk.geodnet.com/api/user/station" \
   -H "token: eyJhbGciOiJIUzI1Ni..." \
@@ -272,14 +275,8 @@ curl -G "https://ppk.geodnet.com/api/user/station" \
   "message": "Success",
   "data": {
     "stations": [
-      {
-        "name": "G001",
-        "distance": 10.23
-      },
-      {
-        "name": "G002",
-        "distance": 60.11
-      }
+      { "name": "G001", "distance": 10.23 },
+      { "name": "G002", "distance": 60.11 }
     ]
   }
 }
@@ -287,9 +284,10 @@ curl -G "https://ppk.geodnet.com/api/user/station" \
 
 ### Create download order
 
-### Api description
 - Purpose: Create an order to generate historical RTCM raw data package.
 - Request method: POST (body: JSON + header: token)
+
+### Api description
 
 <table>
   <tr>
@@ -304,19 +302,22 @@ curl -G "https://ppk.geodnet.com/api/user/station" \
 
 ### Request parameter (Body json)
 
-| Parameter  | Example  |  Type  | Required | Description                                    |
-| :--------- | :------: | :----: | :------: | :--------------------------------------------- |
-| startYear  |   2024   | Number |    Y     | year in which the download starts              |
-| startMonth |    6     | Number |    Y     | month in which the download starts             |
-| startDay   |    22    | Number |    Y     | day in which the download starts               |
-| startHour  |    0     | Number |    Y     | hour in which the download starts              |
-| endYear    |   2024   | Number |    Y     | year in which the download ends                |
-| endMonth   |    6     | Number |    Y     | month in which the download ends               |
-| endDay     |    23    | Number |    Y     | day in which the download ends                 |
-| endHour    |    0     | Number |    Y     | hour in which the download ends                |
-| stations   | [“G001”] | Array  |    Y     | the station list                               |
-| type       |    2     | Number |    N     | Default download all<br>1: All<br>2: 30 second |
-| fileType   |    0     | Number |    N     | Default RTCM<br>0: RTCM<br>1: RINEX 3.04<br>2: RINEX 2.11|
+| Parameter  |   Example   |  Type  | Required | Description                                                        |
+| :--------- | :---------: | :----: | :------: | :----------------------------------------------------------------- |
+| startYear  |    2024     | Number |    Y     | Year in which the download starts                                  |
+| startMonth |      6      | Number |    Y     | Month in which the download starts                                 |
+| startDay   |     22      | Number |    Y     | Day in which the download starts                                   |
+| startHour  |      0      | Number |    Y     | Hour in which the download starts                                  |
+| endYear    |    2024     | Number |    Y     | Year in which the download ends                                    |
+| endMonth   |      6      | Number |    Y     | Month in which the download ends                                   |
+| endDay     |     23      | Number |    Y     | Day in which the download ends                                     |
+| endHour    |      0      | Number |    Y     | Hour in which the download ends                                    |
+| stations   |  `["G001"]` | Array  |    Y     | The station list                                                   |
+| type       |      2      | Number |    N     | Default All<br>1: All<br>2: 30 second                              |
+| fileType   |      0      | Number |    N     | Default RTCM<br>0: `RTCM`<br>1: `RINEX 3.04`<br>2: `RINEX 2.11`  |
+
+> [!IMPORTANT]
+> When downloading the RINEX file, only one site can be downloaded per request, and cross-day downloading is not allowed.
 
 ### Request example
 
@@ -344,14 +345,15 @@ curl -G "https://ppk.geodnet.com/api/user/station" \
 
 ### Response parameter
 
-| Parameter |         Example          |  Type  | Description             |
-| :-------- | :----------------------: | :----: | :---------------------- |
-| code      |           200            | Number | Status code             |
-| message   |         Success          | String | Status code description |
-| data      |                          | Object | Data content            |
-| orderId   | 667bebbe9f32c8ef2dd4643f | String | Order No.               |
+| Parameter     |         Example          |  Type  | Description             |
+| :------------ | :----------------------: | :----: | :---------------------- |
+| code          |           200            | Number | Status code             |
+| message       |         Success          | String | Status code description |
+| data          |                          | Object | Data content            |
+| data.orderId  | 667bebbe9f32c8ef2dd4643f | String | Order No.               |
 
 ### cURL
+
 ```shell
 curl -X POST "https://ppk.geodnet.com/api/user/download" \
   -H "Content-Type: application/json" \
@@ -383,7 +385,8 @@ curl -X POST "https://ppk.geodnet.com/api/user/download" \
 }
 ```
 
-### Create nrcan results file download order
+### Create NRCAN results file download order
+
 - Purpose: Create an order to download NRCAN estimation results (subset files).
 - Request method: POST (body: JSON + header: token)
 
@@ -405,8 +408,11 @@ curl -X POST "https://ppk.geodnet.com/api/user/download" \
 | Parameter |  Example   |  Type  | Required | Description                                  |
 | :-------- | :--------: | :----: | :------: | :------------------------------------------- |
 | startDate | 2025-06-01 |  Date  |    Y     | Start date of the query (format: YYYY-MM-DD) |
-| endDate   | 2025-06-26 |  Date  |    Y     | End date of the query (format: YYYY-MM-DD)   |
+| endDate   | 2025-06-26 |  Date  |    Y     | End date of the query (format: YYYY-MM-DD). Maximum 30 days from startDate |
 | station   |    G001    | String |    Y     | Base station name                            |
+
+> [!CAUTION]
+> The interval between startDate and endDate must not exceed 30 days.
 
 ### Request example
 
@@ -418,9 +424,6 @@ curl -X POST "https://ppk.geodnet.com/api/user/download" \
 }
 ```
 
-> [!CAUTION]
-> The interval between startDate and endDate must not exceed 30 days.
-
 ### Request header
 
 | Parameter |      Example       |  Type  | Required | Description            |
@@ -429,14 +432,15 @@ curl -X POST "https://ppk.geodnet.com/api/user/download" \
 
 ### Response parameter
 
-| Parameter |         Example          |  Type  | Description             |
-| :-------- | :----------------------: | :----: | :---------------------- |
-| code      |           200            | Number | Status code             |
-| message   |         Success          | String | Status code description |
-| data      |                          | Object | Data content            |
-| orderId   | 685e5f63069bfe72e44d17fb | String | Order No.               |
+| Parameter     |         Example          |  Type  | Description             |
+| :------------ | :----------------------: | :----: | :---------------------- |
+| code          |           200            | Number | Status code             |
+| message       |         Success          | String | Status code description |
+| data          |                          | Object | Data content            |
+| data.orderId  | 685e5f63069bfe72e44d17fb | String | Order No.               |
 
 ### cURL
+
 ```shell
 curl -X POST "https://ppk.geodnet.com/api/user/estimation/download" \
   -H "Content-Type: application/json" \
@@ -457,7 +461,7 @@ curl -X POST "https://ppk.geodnet.com/api/user/estimation/download" \
 ```
 
 > [!TIP]
-> List of NRCAN files in the archive, The following three files are NRCAN output files, the other files are ignored.
+> List of NRCAN files in the archive. The following three files are NRCAN output files, the other files are ignored.
 
 ```
 xxxx.pdf
@@ -467,9 +471,10 @@ errors.txt
 
 ### Get download order status
 
-### Api description
 - Purpose: Check processing status of a download order.
 - Request method: GET (path param + header: token)
+
+### Api description
 
 <table>
   <tr>
@@ -484,14 +489,14 @@ errors.txt
 
 ### Request parameter (Path param)
 
-| Parameter | Example |  Type  | Required | Description |
-| :-------- | :-----: | :----: | :------: | :---------- |
-| orderId   | 1232826 | String |    Y     | Order No.   |
+| Parameter |         Example          |  Type  | Required | Description |
+| :-------- | :----------------------: | :----: | :------: | :---------- |
+| orderId   | 685e5f63069bfe72e44d17fb | String |    Y     | Order No.   |
 
 ### Request example
 
 ```
-https://ppk.geodnet.com/api/download/status/123826
+https://ppk.geodnet.com/api/download/status/685e5f63069bfe72e44d17fb
 ```
 
 ### Request header
@@ -502,16 +507,17 @@ https://ppk.geodnet.com/api/download/status/123826
 
 ### Response parameter
 
-| Parameter | Example |  Type  | Description                                                |
-| :-------- | :-----: | :----: | :--------------------------------------------------------- |
-| code      |   200   | Number | Status code                                                |
-| message   | Success | String | Status code description                                    |
-| data      |         | Object | Data content                                               |
-| status    |    2    | Number | Order status<br>1: Processing<br>2: Completed<br>3: Failed |
+| Parameter   | Example |  Type  | Description                                                |
+| :---------- | :-----: | :----: | :--------------------------------------------------------- |
+| code        |   200   | Number | Status code                                                |
+| message     | Success | String | Status code description                                    |
+| data        |         | Object | Data content                                               |
+| data.status |    2    | Number | Order status<br>1: Processing<br>2: Completed<br>3: Failed |
 
 ### cURL
+
 ```shell
-curl -X GET "https://ppk.geodnet.com/api/download/status/123826" \
+curl -X GET "https://ppk.geodnet.com/api/download/status/685e5f63069bfe72e44d17fb" \
   -H "token: eyJhbGciOiJIUzI1Ni..."
 ```
 
@@ -528,6 +534,7 @@ curl -X GET "https://ppk.geodnet.com/api/download/status/123826" \
 ```
 
 ### Download
+
 - Purpose: Download the generated archive once order status is Completed.
 - Request method: GET (path param + header: token)
 
@@ -546,14 +553,14 @@ curl -X GET "https://ppk.geodnet.com/api/download/status/123826" \
 
 ### Request parameter (Path param)
 
-| Parameter | Example |  Type  | Required | Description |
-| :-------- | :-----: | :----: | :------: | :---------- |
-| orderId   | 1232826 | String |    Y     | Order No.   |
+| Parameter |         Example          |  Type  | Required | Description |
+| :-------- | :----------------------: | :----: | :------: | :---------- |
+| orderId   | 685e5f63069bfe72e44d17fb | String |    Y     | Order No.   |
 
 ### Request example
 
 ```
-https://ppk.geodnet.com/api/download/123826
+https://ppk.geodnet.com/api/download/685e5f63069bfe72e44d17fb
 ```
 
 ### Request header
@@ -566,31 +573,36 @@ https://ppk.geodnet.com/api/download/123826
 
 - If parameters and checksum are valid and the order is completed, the response is a ZIP file stream.
 - If the request is abnormal (e.g., invalid orderId, not completed), the response is JSON with error code/message.
+
 > [!TIP]
-> Use -L in cURL to follow redirects and -o to save the file with a desired name.
+> Use `-L` in cURL to follow redirects and `-o` to save the file with a desired name.
 
 ### Response parameter
 
 | Parameter | Example |  Type  | Description             |
 | :-------- | :-----: | :----: | :---------------------- |
-| code      |   200   | Number | Status code             |
-| message   | Success | String | Status code description |
+| code      |   304   | Number | Error code (see status code list) |
+| message   | The download task has not been completed | String | Error description |
 
-Only return the json data if the request is abnormal; otherwise, return the downloaded file.
+Only return the JSON data if the request is abnormal; otherwise, return the downloaded file.
 
-### Response example
+### cURL
 
-If the parameter checksum is successful it will respond with the zip file for this download.
+```shell
+curl -L "https://ppk.geodnet.com/api/download/685e5f63069bfe72e44d17fb" \
+  -H "token: eyJhbGciOiJIUzI1Ni..." \
+  -o "geodnet_685e5f63069bfe72e44d17fb.zip"
+```
 
 ## Base stations
 
 ### Get all stations
 
-### Api description
-
 Get a list of all base stations, including precise coordinate information.
 
 - Request method: GET (header: token)
+
+### Api description
 
 <table>
   <tr>
@@ -603,13 +615,6 @@ Get a list of all base stations, including precise coordinate information.
   </tr>
 </table>
 
-### Request parameter
-
-| Parameter | Example | Type | Required | Description |
-| :-------- | :-----: | :--: | :------: | :---------- |
-
-### Request example
-
 ### Request header
 
 | Parameter |      Example       |  Type  | Required | Description            |
@@ -618,30 +623,31 @@ Get a list of all base stations, including precise coordinate information.
 
 ### Response parameter
 
-| Parameter      |                   Example                    |       Type       | Description                           |
-| :------------- | :------------------------------------------: | :--------------: | :------------------------------------ |
-| code           |                     200                      |      Number      | Status code                           |
-| message        |                   Success                    |      String      | Status code description               |
-| data           |                                              |      Object      | Data content                          |
-| stations       |                                              |      Array       | Station list                          |
-| name           |                     G001                     |      String      | Station name                          |
-| status         |                    ACTIVE                    |      String      | Station status(ONLINE,ACTIVE,OFFLINE) |
-| coordinate     |                                              |      Object      | Coordinate info<br>(Deprecated)       |
-| ITRF2020       | [-2687303.0592, -4302926.7171, 3852731.263]  | Array<br>[x,y,z] | ITRF2020 coordinate                   |
-| ITRF2020(2015) | [-2687302.8158, -4302926.9653, 3852731.1618] | Array<br>[x,y,z] | ITRF2020(2015) coordinate             |
-| WGS84          | [-2687303.0595, -4302926.7172, 3852731.2649] | Array<br>[x,y,z] | WGS84 Coordinate                      |
-| local          | [-2687301.916, -4302928.3503, 3852731.1364]  | Array<br>[x,y,z] | Local Coordinate                      |
-| highPrecision  |                                              |      Array       | High precision coordinate info        |
-| name           |              ITRF2020(2025.50)               |      String      | Coordinate system                     |
-| epoch          |                    2025.5                    |      Number      | Epoch                                 |
-| x              |                -2687303.0592                 |      Number      | X                                     |
-| y              |                -4302926.7171                 |      Number      | Y                                     |
-| z              |                 3852731.263                  |      Number      | Z                                     |
+| Parameter                              |                   Example                    |       Type       | Description                           |
+| :------------------------------------- | :------------------------------------------: | :--------------: | :------------------------------------ |
+| code                                   |                     200                      |      Number      | Status code                           |
+| message                                |                   Success                    |      String      | Status code description               |
+| data                                   |                                              |      Object      | Data content                          |
+| data.stations                          |                                              |      Array       | Station list                          |
+| data.stations[].name                   |                     G001                     |      String      | Station name                          |
+| data.stations[].status                 |                    ACTIVE                    |      String      | Station status (ONLINE, ACTIVE, OFFLINE) |
+| data.stations[].coordinate             |                                              |      Object      | Coordinate info (Deprecated)          |
+| data.stations[].coordinate.ITRF2020    | [-2687303.0592, -4302926.7171, 3852731.263]  | Array `[x,y,z]`  | ITRF2020 coordinate                   |
+| data.stations[].coordinate.ITRF2020(2015) | [-2687302.8158, -4302926.9653, 3852731.1618] | Array `[x,y,z]` | ITRF2020(2015) coordinate             |
+| data.stations[].coordinate.WGS84       | [-2687303.0595, -4302926.7172, 3852731.2649] | Array `[x,y,z]`  | WGS84 coordinate                      |
+| data.stations[].coordinate.local       | [-2687301.916, -4302928.3503, 3852731.1364]  | Array `[x,y,z]`  | Local coordinate                      |
+| data.stations[].highPrecision          |                                              |      Array       | High precision coordinate list        |
+| data.stations[].highPrecision[].name   |              ITRF2020(2025.50)               |      String      | Coordinate system                     |
+| data.stations[].highPrecision[].epoch  |                    2025.5                    |      Number      | Epoch                                 |
+| data.stations[].highPrecision[].x      |                -2687303.0592                 |      Number      | X                                     |
+| data.stations[].highPrecision[].y      |                -4302926.7171                 |      Number      | Y                                     |
+| data.stations[].highPrecision[].z      |                 3852731.263                  |      Number      | Z                                     |
 
 > [!CAUTION]
-> If x,y,z is 0, the coordinates are invalid.
+> If x, y, z is 0, the coordinates are invalid.
 
 ### cURL
+
 ```shell
 curl -X GET "https://ppk.geodnet.com/api/user/station/list" \
   -H "token: eyJhbGciOiJIUzI1Ni..."
@@ -665,34 +671,10 @@ curl -X GET "https://ppk.geodnet.com/api/user/station/list" \
           "local": [-2687301.916, -4302928.3503, 3852731.1364]
         },
         "highPrecision": [
-          {
-            "name": "ITRF2020(2025.50)",
-            "epoch": 2025.5,
-            "x": -2687303.0592,
-            "y": -4302926.7171,
-            "z": 3852731.263
-          },
-          {
-            "name": "ITRF2020(2015.00)",
-            "epoch": 2015,
-            "x": -2687302.8158,
-            "y": -4302926.9653,
-            "z": 3852731.1618
-          },
-          {
-            "name": "WGS84(G2139)(2025.50)",
-            "epoch": 2025.5,
-            "x": -2687303.0595,
-            "y": -4302926.7172,
-            "z": 3852731.2649
-          },
-          {
-            "name": "NAD83(2011)(2010.00)",
-            "epoch": 2010,
-            "x": -2687301.916,
-            "y": -4302928.3503,
-            "z": 3852731.1364
-          }
+          { "name": "ITRF2020(2025.50)", "epoch": 2025.5, "x": -2687303.0592, "y": -4302926.7171, "z": 3852731.263 },
+          { "name": "ITRF2020(2015.00)", "epoch": 2015, "x": -2687302.8158, "y": -4302926.9653, "z": 3852731.1618 },
+          { "name": "WGS84(G2139)(2025.50)", "epoch": 2025.5, "x": -2687303.0595, "y": -4302926.7172, "z": 3852731.2649 },
+          { "name": "NAD83(2011)(2010.00)", "epoch": 2010, "x": -2687301.916, "y": -4302928.3503, "z": 3852731.1364 }
         ]
       }
     ]
@@ -702,10 +684,11 @@ curl -X GET "https://ppk.geodnet.com/api/user/station/list" \
 
 ### Get station information
 
-### Api description
-
 Get details of a specific base station, including high precision coordinates.
+
 - Request method: GET (path param + header: token)
+
+### Api description
 
 <table>
   <tr>
@@ -718,7 +701,7 @@ Get details of a specific base station, including high precision coordinates.
   </tr>
 </table>
 
-### Request parameter
+### Request parameter (Path param)
 
 | Parameter | Example |  Type  | Required | Description  |
 | :-------- | :-----: | :----: | :------: | :----------- |
@@ -738,29 +721,30 @@ https://ppk.geodnet.com/api/user/station/G001
 
 ### Response parameter
 
-| Parameter      |                   Example                    |       Type       | Description                           |
-| :------------- | :------------------------------------------: | :--------------: | :------------------------------------ |
-| code           |                     200                      |      Number      | Status code                           |
-| message        |                   Success                    |      String      | Status code description               |
-| data           |                                              |      Object      | Data content                          |
-| name           |                     G001                     |      String      | Station name                          |
-| status         |                    ACTIVE                    |      String      | Station status(ONLINE,ACTIVE,OFFLINE) |
-| coordinate     |                                              |      Object      | Coordinate info<br>(Deprecated)       |
-| ITRF2020       | [-2687303.0592, -4302926.7171, 3852731.263]  | Array<br>[x,y,z] | ITRF2020 coordinate                   |
-| ITRF2020(2015) | [-2687302.8158, -4302926.9653, 3852731.1618] | Array<br>[x,y,z] | ITRF2020(2015) coordinate             |
-| WGS84          | [-2687303.0595, -4302926.7172, 3852731.2649] | Array<br>[x,y,z] | WGS84 Coordinate                      |
-| local          | [-2687301.916, -4302928.3503, 3852731.1364]  | Array<br>[x,y,z] | Local Coordinate                      |
-| highPrecision  |                                              |      Array       | High precision coordinate info        |
-| name           |              ITRF2020(2025.50)               |      String      | Coordinate system                     |
-| epoch          |                    2025.5                    |      Number      | Epoch                                 |
-| x              |                -2687303.0592                 |      Number      | X                                     |
-| y              |                -4302926.7171                 |      Number      | Y                                     |
-| z              |                 3852731.263                  |      Number      | Z                                     |
+| Parameter                       |                   Example                    |       Type       | Description                              |
+| :------------------------------ | :------------------------------------------: | :--------------: | :--------------------------------------- |
+| code                            |                     200                      |      Number      | Status code                              |
+| message                         |                   Success                    |      String      | Status code description                  |
+| data                            |                                              |      Object      | Data content                             |
+| data.name                       |                     G001                     |      String      | Station name                             |
+| data.status                     |                    ACTIVE                    |      String      | Station status (ONLINE, ACTIVE, OFFLINE) |
+| data.coordinate                 |                                              |      Object      | Coordinate info (Deprecated)             |
+| data.coordinate.ITRF2020        | [-2687303.0592, -4302926.7171, 3852731.263]  | Array `[x,y,z]`  | ITRF2020 coordinate                      |
+| data.coordinate.ITRF2020(2015)  | [-2687302.8158, -4302926.9653, 3852731.1618] | Array `[x,y,z]`  | ITRF2020(2015) coordinate                |
+| data.coordinate.WGS84           | [-2687303.0595, -4302926.7172, 3852731.2649] | Array `[x,y,z]`  | WGS84 coordinate                         |
+| data.coordinate.local           | [-2687301.916, -4302928.3503, 3852731.1364]  | Array `[x,y,z]`  | Local coordinate                         |
+| data.highPrecision              |                                              |      Array       | High precision coordinate list           |
+| data.highPrecision[].name       |              ITRF2020(2025.50)               |      String      | Coordinate system                        |
+| data.highPrecision[].epoch      |                    2025.5                    |      Number      | Epoch                                    |
+| data.highPrecision[].x          |                -2687303.0592                 |      Number      | X                                        |
+| data.highPrecision[].y          |                -4302926.7171                 |      Number      | Y                                        |
+| data.highPrecision[].z          |                 3852731.263                  |      Number      | Z                                        |
 
 > [!CAUTION]
-> If x,y,z is 0, the coordinates are invalid.
+> If x, y, z is 0, the coordinates are invalid.
 
 ### cURL
+
 ```shell
 curl -X GET "https://ppk.geodnet.com/api/user/station/G001" \
   -H "token: eyJhbGciOiJIUzI1Ni..."
@@ -782,41 +766,19 @@ curl -X GET "https://ppk.geodnet.com/api/user/station/G001" \
       "local": [-2687301.916, -4302928.3503, 3852731.1364]
     },
     "highPrecision": [
-      {
-        "name": "ITRF2020(2025.50)",
-        "epoch": 2025.5,
-        "x": -2687303.0592,
-        "y": -4302926.7171,
-        "z": 3852731.263
-      },
-      {
-        "name": "ITRF2020(2015.00)",
-        "epoch": 2015,
-        "x": -2687302.8158,
-        "y": -4302926.9653,
-        "z": 3852731.1618
-      },
-      {
-        "name": "WGS84(G2139)(2025.50)",
-        "epoch": 2025.5,
-        "x": -2687303.0595,
-        "y": -4302926.7172,
-        "z": 3852731.2649
-      },
-      {
-        "name": "NAD83(2011)(2010.00)",
-        "epoch": 2010,
-        "x": -2687301.916,
-        "y": -4302928.3503,
-        "z": 3852731.1364
-      }
+      { "name": "ITRF2020(2025.50)", "epoch": 2025.5, "x": -2687303.0592, "y": -4302926.7171, "z": 3852731.263 },
+      { "name": "ITRF2020(2015.00)", "epoch": 2015, "x": -2687302.8158, "y": -4302926.9653, "z": 3852731.1618 },
+      { "name": "WGS84(G2139)(2025.50)", "epoch": 2025.5, "x": -2687303.0595, "y": -4302926.7172, "z": 3852731.2649 },
+      { "name": "NAD83(2011)(2010.00)", "epoch": 2010, "x": -2687301.916, "y": -4302928.3503, "z": 3852731.1364 }
     ]
   }
 }
 ```
 
 ## Quick Start (End-to-end cURL)
+
 1. Sign in to obtain token
+
 ```shell
 TOKEN=$(curl -s -X POST "https://ppk.geodnet.com/api/user/signin" \
   -H "Content-Type: application/json" \
@@ -824,7 +786,8 @@ TOKEN=$(curl -s -X POST "https://ppk.geodnet.com/api/user/signin" \
 ```
 
 2. Create download order
-``` shell
+
+```shell
 ORDER=$(curl -s -X POST "https://ppk.geodnet.com/api/user/download" \
   -H "Content-Type: application/json" \
   -H "token: $TOKEN" \
@@ -833,6 +796,7 @@ ORDER=$(curl -s -X POST "https://ppk.geodnet.com/api/user/download" \
 ```
 
 3. Poll status until completed
+
 ```shell
 while true; do
   STATUS=$(curl -s "https://ppk.geodnet.com/api/download/status/$ORDER" -H "token: $TOKEN" | jq -r '.data.status')
@@ -850,41 +814,67 @@ done
 ```
 
 4. Download file
+
 ```shell
 curl -L "https://ppk.geodnet.com/api/download/$ORDER" -H "token: $TOKEN" -o "geodnet_${ORDER}.zip"
 ```
 
 > [!NOTE]
-> Steps are identical for NRCAN results, except step 2 uses /api/user/estimation/download with startDate, endDate, station.
+> Steps are identical for NRCAN results, except step 2 uses `/api/user/estimation/download` with `startDate`, `endDate`, `station`.
 
-5. Convert to Rinex
-   
-Need to download the open-source convert tool from https://github.com/geodnet/rtklib_lte, the window binary is already included, you need to build the convbin project for linux or mac platform  
+5. Convert to RINEX
+
+Need to download the open-source convert tool from https://github.com/geodnet/rtklib_lte, the window binary is already included, you need to build the convbin project for linux or mac platform.
 
 ```shell
 convbin.exe -r rtcm3 -tr year/mon/day hour:min:sec unziped_rtcm_file
 ```
 
 > [!NOTE]
-> year, mon, day, hour, min, sec are the approximate time of the rtcm log file (not the time you download the file)   
-> use -v 2.11 to output rinex 2.11 legacy version
+> year, mon, day, hour, min, sec are the approximate time of the RTCM log file (not the time you download the file).
+> Use `-v 2.11` to output RINEX 2.11 legacy version.
 
 ## Appendix
 
 ### Status code list
 
-| Code | Description                                         |
-| :--- | :-------------------------------------------------- |
-| 200  | Success                                             |
-| 201  | Request parameter error                             |
-| 202  | Username does not exist                             |
-| 203  | Password is incorrect                               |
-| 204  | Invalid account                                     |
-| 301  | Incomplete date information                         |
-| 302  | Invalid date parameter                              |
-| 303  | Request parameter error                             |
-| 304  | The download task has not been completed            |
-| 305  | The download task has failed                        |
-| 306  | The time period cannot exceed one month             |
-| 307  | Invalid stations or no data found during the period |
-| 501  | Request exception                                   |
+| Code  | Description                                                        |
+| :---- | :----------------------------------------------------------------- |
+| `200` | Success                                                            |
+| `201` | Request parameter error                                            |
+| `202` | Username does not exist                                            |
+| `203` | Password is incorrect                                              |
+| `204` | Invalid account                                                    |
+| `205` | Token expired                                                      |
+| `301` | Incomplete date information                                        |
+| `302` | Invalid date parameter                                             |
+| `303` | Insufficient balance                                               |
+| `304` | The download task has not been completed                           |
+| `305` | The download task has failed                                       |
+| `306` | The time period cannot exceed one month                            |
+| `307` | Invalid stations or no data found during the period                |
+| `308` | Download RINEX files; a single request can only process one station |
+| `309` | Download RINEX files; cross-day requests are not allowed           |
+| `501` | Request exception                                                  |
+
+### Response examples
+
+```json
+// Success
+{
+  "code": 200,
+  "message": "Success"
+}
+
+// Not completed
+{
+  "code": 304,
+  "message": "The download task has not been completed"
+}
+
+// Parameter error
+{
+  "code": 201,
+  "message": "Request parameter error"
+}
+```
