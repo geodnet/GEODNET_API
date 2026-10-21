@@ -67,7 +67,7 @@ Please submit your application to <a href="mailto:support@geodnet.com">support@g
 
 ## Quick Start (End-to-end cURL)
 
-![PPK Workflow Diagram](../images/ppk_workflow.png)
+![PPK Workflow Diagram](./images/ppk_workflow.png)
 
 
 

@@ -183,7 +183,7 @@ If you are an RTK service distributor and have completed GEODNET authorization, 
 
 ## Quick Start
 
-![RTK Workflow Diagram](../images/rtk_workflow.png)
+![RTK Workflow Diagram](./images/rtk_workflow.png)
 
 1. **Submit a free trial request to GEODNET, and GEODNET will send you the account information.**
 2. **After obtaining the RTK account, configure the account information in your Rover.**

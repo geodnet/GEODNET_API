@@ -55,7 +55,7 @@ The account for GGA Service is the one you obtained when applying for the RTK Se
 
 ## Quick Start
 
-![GGA Workflow Diagram](../images/gga_workflow.png)
+![GGA Workflow Diagram](./images/gga_workflow.png)
 
 
 
