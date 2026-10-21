@@ -74,13 +74,13 @@ Currently, GEODNET RTK service is based on Nearest-base RTK service. GEODNET pro
 
 | # | Mountpoint | Details |
 | :--- | :--- | :--- |
-|  | AUTO | Regional Geodetic Coordinate System (RGCS) |
-|  | AUTO_ITRF2020 | ITRF2020 Geodetic Coordinate System at current epoch |
-|  | AUTO_ITRF2014 | ITRF2014 Geodetic Coordinate System at current epoch |
-|  | AUTO_WGS84 | WGS84(G2139) in the middle of the current year (for example, 2025.5 for year 2025, 2024.5 for year 2024) |
-|  | BRDC | Global Ephemeris Data |
-|  | NATRF2020 | Test RTK service for NTRAF2020 coordinate frame (only in NA) |
-|  | SIRGAS2000(2026.5) | Test RTK service for SIRGAS2000 coordinate frame in the middle of the current year (only in SA) |
+| 1 | AUTO | Regional Geodetic Coordinate System (RGCS) |
+| 2 | AUTO_ITRF2020 | ITRF2020 Geodetic Coordinate System at current epoch |
+| 3 | AUTO_ITRF2014 | ITRF2014 Geodetic Coordinate System at current epoch |
+| 4 | AUTO_WGS84 | WGS84(G2139) in the middle of the current year (for example, 2025.5 for year 2025, 2024.5 for year 2024) |
+| 5 | BRDC | Global Ephemeris Data |
+| 6 | NATRF2020 | Test RTK service for NTRAF2020 coordinate frame (only in NA) |
+| 7 | SIRGAS2000(2026.5) | Test RTK service for SIRGAS2000 coordinate frame in the middle of the current year (only in SA) |
 
 
 
