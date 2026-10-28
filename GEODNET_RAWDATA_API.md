@@ -29,18 +29,21 @@
 
 ## Introduction
 
-### Raw GNSS Observations for Custom Workflows
+### GEODNET Raw Data Service Description
 
-The Raw Data Service provides direct access to **observation data** from GEODNET base stations — the unprocessed measurements of satellite signals, available as RINEX files or in raw RTCM form. This is what underlies every other service we offer; if you have your own processing pipeline, your own scientific question, or a workflow that doesn't fit RTK or PPK, raw data is the foundation.
-
-
-Each station logs continuously at 1 Hz with full triple-band, full-constellation observations (GPS, GLONASS, Galileo, BeiDou). Coordinates of every station have been independently verified using PPP through NRCan's CSRS-PPP service — so the underlying station positions are known to better than 5 cm in three dimensions.
+GEODNET Raw Data Service provides **real-time access to raw GNSS observation data in RTCM format** from GEODNET's global network of GNSS reference stations. Designed for professional and enterprise applications, the service delivers the underlying satellite measurements required to build, operate, and scale advanced GNSS positioning solutions.
 
 
-**Best for:** scientific research (ionospheric monitoring, tropospheric studies, geodynamics), custom RTK/PPK processing engines, training and benchmarking machine-learning models on real GNSS data, archival of long-term observation records, and any application where you need the raw observations rather than a pre-computed correction.
+GEODNET base stations continuously collect and transmit raw observations across all supported GNSS constellations and frequencies, providing comprehensive access to multi-constellation, multi-frequency satellite measurements. Delivered through real-time RTCM data streams, these observations can be integrated directly into customer processing pipelines, enabling low-latency data ingestion and flexible integration with proprietary positioning engines and GNSS infrastructure.
 
 
-For background on RINEX, observation data, and the role of raw measurements in GNSS, see the **Knowledge Center, Sections 1 and 2**, and the message-type reference in **Section 8.2**.
+Unlike services that provide precomputed RTK corrections, Raw Data Service gives customers direct access to the underlying GNSS observations, allowing them to maintain full control over data processing, positioning algorithms, and service architecture. This foundation supports the development of customized GNSS solutions, including network RTK, Virtual Reference Station (VRS), and PPP-based positioning services, subject to the requirements of each processing approach.
+
+
+**Best for:** GNSS service providers, positioning technology companies, surveying and mapping solution providers, and equipment manufacturers developing their own positioning services, correction infrastructure, and GNSS processing platforms.
+
+
+By combining real-time raw observation streams with access to GEODNET's global reference station network, GEODNET Raw Data Service provides a professional data foundation for enterprises building scalable, flexible, and differentiated GNSS positioning solutions.
 
 
 

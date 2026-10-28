@@ -35,18 +35,21 @@
 
 ## Introduction
 
-### Post-Processed Centimeter Accuracy from Historical Data
+### GEODNET PPK Service Description
 
-Not every workflow needs corrections in real time. **Post-Processed Kinematic (PPK)** uses the same underlying math as RTK, but applies corrections *after* the data is collected — typically once you're back at the office. This is the standard approach for drone mapping, remote-area work where cellular coverage is unreliable, and any application where data integrity matters more than real-time feedback.
-
-
-GEODNET's PPK Service provides on-demand access to **historical RTCM observation data** from any base station in the network. You download the time range you need, convert it to RINEX format using free tools like RTKLIB or commercial software, and use it as the reference for post-processing your rover data.
+**GEODNET PPK (Post-Processed Kinematic) Service** provides on-demand access to historical GNSS observation data collected and archived by GEODNET's global network of GNSS reference stations. Designed for professional positioning, surveying, and mapping workflows, the service enables customers to retrieve reference station data for post-processing **GNSS observations collected in the field**.
 
 
-**Best for:** drone mapping (Pix4D, Metashape, WingtraHub workflows), survey-grade aerial photogrammetry, drone LiDAR, remote-area surveying without cellular coverage, archival and legal-record work where you want to verify a measurement after the fact, and scientific applications where the highest possible accuracy is needed.
+Customers can select the required base station and observation time range and access historical data in **RINEX or RTCM format**, supporting integration with a wide range of GNSS processing software, positioning engines, and established post-processing workflows. The retrieved reference data can be combined with rover observations to perform PPK processing and other GNSS analyses using compatible tools and algorithms.
 
 
-For a deeper explanation of RTK vs. PPK and when to choose which, see the **Knowledge Center, Section 2.6**.
+By providing flexible access to archived GNSS observations in widely supported formats, GEODNET PPK Service helps professionals process field data without requiring a continuous real-time connection to a reference station during data collection. This makes it particularly suitable for workflows in remote areas, post-mission processing, and applications where positioning results are generated or refined after field operations.
+
+
+**Best for:** drone mapping and aerial photogrammetry, drone LiDAR, professional surveying and mapping, field operations in areas with **limited or no real-time correction connectivity**, and GNSS applications requiring historical observation data for post-processing, quality assessment, or independent verification.
+
+
+GEODNET PPK Service provides a reliable source of historical GNSS reference data, giving professionals the flexibility to choose their preferred data format and processing tools while leveraging GEODNET's global reference station network.
 
 
 
